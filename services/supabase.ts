@@ -20,8 +20,8 @@ const getEnv = (key: string, fallback: string) => {
   return fallback;
 };
 
-const supabaseUrl = getEnv('VITE_SUPABASE_URL', 'https://qcnyyjzivdhezfranyja.supabase.co');
-const supabaseAnonKey = getEnv('VITE_SUPABASE_ANON_KEY', 'sb_publishable_6yAuApxzGpYhQvbtEZbwoA_1YnWAfJr');
+const supabaseUrl = getEnv('VITE_SUPABASE_URL', 'o');
+const supabaseAnonKey = getEnv('VITE_SUPABASE_ANON_KEY', 'sb');
 
 console.log('[Supabase] Initializing with URL:', supabaseUrl);
 
