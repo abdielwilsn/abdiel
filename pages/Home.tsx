@@ -84,7 +84,7 @@ const Home: React.FC = () => {
         </h2>
         <div className="flex flex-wrap gap-x-8 gap-y-4">
           <a
-            href="https://github.com/antfu"
+            href="https://github.com/abdielwilsn"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2.5 opacity-40 hover:opacity-100 hover:text-black dark:hover:text-white transition-all group"
@@ -100,7 +100,7 @@ const Home: React.FC = () => {
           </a>
 
           <a
-            href="https://twitter.com/antfu7"
+            href="https://twitter.com/abdielwilsn"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2.5 opacity-40 hover:opacity-100 hover:text-[#1DA1F2] transition-all group"
@@ -116,7 +116,7 @@ const Home: React.FC = () => {
           </a>
 
           <a
-            href="https://youtube.com/@antfu"
+            href="https://youtube.com/@abdiwlwilsn"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2.5 opacity-40 hover:opacity-100 hover:text-[#FF0000] transition-all group"
@@ -152,7 +152,10 @@ const Home: React.FC = () => {
       <section className="pt-8 flex flex-col items-center md:items-start gap-4">
         <p className="text-sm opacity-40">
           Or mail me at{" "}
-          <a href="mailto:hi@abdielwilsn.me" className="opacity-100 hover:underline">
+          <a
+            href="mailto:hi@abdielwilsn.me"
+            className="opacity-100 hover:underline"
+          >
             hi@abdielwilsn.me
           </a>
         </p>
