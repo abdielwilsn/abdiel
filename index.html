@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJW | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .font-signature {
+        font-family: 'Caveat', cursive;
+      }
+      .dark {
+        background-color: #050505;
+        color: #e5e7eb;
+      }
+      .light {
+        background-color: #ffffff;
+        color: #1f2937;
+      }
+      /* Custom selection color */
+      ::selection {
+        background: rgba(128, 128, 128, 0.2);
+        color: inherit;
+      }
+      /* Scrollbar styling */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #88888840;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #88888880;
+      }
+
+      /* Cute continuous bouncy squash-and-stretch animation */
+      @keyframes cute-bounce {
+        0%, 100% { 
+          transform: translateY(0) scale(1, 1); 
+        }
+        30% {
+          transform: translateY(-4px) scale(0.95, 1.05);
+        }
+        50% { 
+          transform: translateY(0) scale(1.05, 0.95); 
+        }
+      }
+      .animate-letter-1 { animation: cute-bounce 2s ease-in-out infinite; }
+      .animate-letter-2 { animation: cute-bounce 2s ease-in-out infinite 0.15s; }
+      .animate-letter-3 { animation: cute-bounce 2s ease-in-out infinite 0.3s; }
+
+      /* Markdown Styles */
+      .prose h1 { font-size: 1.875rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; }
+      .prose h2 { font-size: 1.5rem; font-weight: 600; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+      .prose h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+      .prose p { margin-bottom: 1.25rem; }
+      .prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+      .prose ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+      .prose a { color: #10b981; text-decoration: underline; text-underline-offset: 4px; }
+      .prose blockquote { border-left: 4px solid #e5e7eb; padding-left: 1rem; font-style: italic; opacity: 0.8; margin-bottom: 1.25rem; }
+      .dark .prose blockquote { border-left-color: #374151; }
+      .prose code { background: rgba(128, 128, 128, 0.1); padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; }
+      .prose pre { background: #0f172a; color: #f8fafc; padding: 1rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1.25rem; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react/": "https://esm.sh/react@19.0.0/",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/": "https://esm.sh/react-dom@19.0.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@7.1.3",
+    "marked": "https://esm.sh/marked@15.0.0",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.47.10"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="light">
+    <div id="root">
+      <div id="loading-fallback" style="display: flex; height: 100vh; align-items: center; justify-content: center; font-family: sans-serif; opacity: 0.5;">
+        <div style="text-align: center;">
+          <p>Initializing...</p>
+          <p style="font-size: 12px; margin-top: 8px;">If this screen stays blank, please check your internet connection.</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Global error handler to help catch initialization issues
+      window.onerror = function(msg, url, lineNo, columnNo, error) {
+        console.error('Global Error Captured:', msg, 'at', url, ':', lineNo);
+        const fallback = document.getElementById('loading-fallback');
+        if (fallback) {
+          fallback.innerHTML = `
+            <div style="color: #ef4444; padding: 20px; max-width: 400px; text-align: center;">
+              <h2 style="font-weight: bold; margin-bottom: 10px;">Application Error</h2>
+              <p style="font-size: 14px; margin-bottom: 20px;">${msg}</p>
+              <button onclick="window.location.reload()" style="background: #000; color: #fff; padding: 8px 16px; border-radius: 6px; cursor: pointer;">Retry</button>
+            </div>
+          `;
+        }
+        return false;
+      };
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
