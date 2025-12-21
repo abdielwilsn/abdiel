@@ -17,8 +17,10 @@ const Navbar: React.FC<NavbarProps> = ({
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const navLinks = [
     { label: "Blog", path: "/posts" },
@@ -27,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({
     { label: "Now", path: "/now" },
   ];
 
-  // Close search when clicking outside
+  // Close search and mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -36,12 +38,19 @@ const Navbar: React.FC<NavbarProps> = ({
       ) {
         setIsSearchOpen(false);
       }
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node) &&
+        isMobileMenuOpen
+      ) {
+        setIsMobileMenuOpen(false);
+      }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [isMobileMenuOpen]);
 
-  // Keyboard shortcut (Cmd+K or /)
+  // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -49,18 +58,17 @@ const Navbar: React.FC<NavbarProps> = ({
         setIsSearchOpen(true);
         inputRef.current?.focus();
       }
-      if (e.key === "/") {
-        if (
-          document.activeElement?.tagName !== "INPUT" &&
-          document.activeElement?.tagName !== "TEXTAREA"
-        ) {
-          e.preventDefault();
-          setIsSearchOpen(true);
-          inputRef.current?.focus();
-        }
+      if (
+        e.key === "/" &&
+        !["INPUT", "TEXTAREA"].includes(document.activeElement?.tagName || "")
+      ) {
+        e.preventDefault();
+        setIsSearchOpen(true);
+        inputRef.current?.focus();
       }
       if (e.key === "Escape") {
         setIsSearchOpen(false);
+        setIsMobileMenuOpen(false);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -89,12 +97,13 @@ const Navbar: React.FC<NavbarProps> = ({
     navigate(path);
     setIsSearchOpen(false);
     setSearchQuery("");
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <nav className="w-full px-6 py-4 md:px-12 lg:px-20 relative z-50 flex items-center justify-between">
-      {/* Animated Text Logo 'ajw' */}
-      <div className="flex items-center gap-8">
+      {/* Logo + Search */}
+      <div className="flex items-center gap-6 md:gap-8">
         <NavLink to="/" className="group flex items-center select-none">
           <div className="font-signature text-2xl md:text-3xl flex gap-0.5 opacity-80 group-hover:opacity-100 transition-opacity">
             <span className="inline-block animate-letter-1">a</span>
@@ -103,17 +112,17 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
         </NavLink>
 
-        {/* Search Bar - Desktop */}
+        {/* Search Bar - Desktop only */}
         <div ref={searchRef} className="relative hidden md:block">
           <div
             className={`
-            flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all border
-            ${
-              isSearchOpen
-                ? "w-64 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 shadow-sm"
-                : "w-40 border-transparent hover:bg-gray-100 dark:hover:bg-gray-800"
-            }
-          `}
+              flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all border
+              ${
+                isSearchOpen
+                  ? "w-64 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 shadow-sm"
+                  : "w-40 border-transparent hover:bg-gray-100 dark:hover:bg-gray-800"
+              }
+            `}
           >
             <svg
               className="w-4 h-4 opacity-40"
@@ -221,9 +230,9 @@ const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Navigation Controls Group */}
-      <div className="flex items-center gap-3 md:gap-6">
-        {/* Text Nav Links */}
+      {/* Desktop Nav Links + Action Icons */}
+      <div className="flex items-center gap-6 md:gap-8">
+        {/* Text Nav Links - Hidden on mobile */}
         <div className="hidden sm:flex items-center gap-5 md:gap-7 mr-2">
           {navLinks.map((item) => (
             <NavLink
@@ -249,8 +258,8 @@ const Navbar: React.FC<NavbarProps> = ({
           </NavLink>
         </div>
 
-        {/* Action Icons */}
-        <div className="flex items-center gap-2 md:gap-4">
+        {/* Action Icons - Always visible */}
+        <div className="flex items-center gap-3 md:gap-4">
           <NavLink
             to="/media"
             className="p-1 opacity-50 hover:opacity-100 transition-opacity"
@@ -390,8 +399,115 @@ const Navbar: React.FC<NavbarProps> = ({
               </svg>
             )}
           </button>
+
+          {/* Hamburger Menu Button - Mobile only */}
+          <button
+            className="sm:hidden p-1 opacity-70 hover:opacity-100 transition-opacity"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/60 sm:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <div
+            ref={mobileMenuRef}
+            className="absolute top-0 right-0 w-4/5 max-w-xs h-full bg-white dark:bg-gray-950 border-l border-gray-200 dark:border-gray-800 p-6 flex flex-col animate-in slide-in-from-right duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-center mb-8">
+              <span className="text-lg font-medium">Menu</span>
+              <button onClick={() => setIsMobileMenuOpen(false)}>
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              {navLinks.map((item) => (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={({ isActive }) => `
+                    text-lg py-2 transition-colors
+                    ${
+                      isActive
+                        ? "text-blue-600 dark:text-blue-400 font-medium"
+                        : "text-gray-700 dark:text-gray-300"
+                    }
+                  `}
+                >
+                  {item.label}
+                </NavLink>
+              ))}
+
+              <div className="border-t border-gray-200 dark:border-gray-800 pt-4 mt-4">
+                <NavLink
+                  to={isAuthenticated ? "/admin" : "/login"}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={({ isActive }) => `
+                    text-lg py-2 transition-colors
+                    ${
+                      isActive
+                        ? "text-blue-600 dark:text-blue-400 font-medium"
+                        : "text-gray-700 dark:text-gray-300"
+                    }
+                  `}
+                >
+                  {isAuthenticated ? "Admin" : "Login"}
+                </NavLink>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
