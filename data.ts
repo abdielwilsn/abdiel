@@ -10,7 +10,8 @@ import {
 
 export const INITIAL_HOME_DATA: HomeData = {
   name: "Abdiel John Wilson",
-  bioTitle: "Hey there. I’m Abdiel,  an open source aficionado and a software engineer",
+  bioTitle:
+    "Hey there. I’m Abdiel,  an open source aficionado and a software engineer",
   affiliations: [
     { id: "1", label: "RkyConsults", href: "https://nuxtlabs.com" },
     // { id: "2", label: "Vercel", href: "https://vercel.com" },
@@ -23,14 +24,22 @@ export const INITIAL_HOME_DATA: HomeData = {
   maintaining: [
     // { id: "1", label: "Shiki", href: "#" },
     // { id: "2", label: "Twoslash", href: "#" },
-    { id: "3", label: "laravel-stubber", href: "https://packagist.org/packages/wilsn/laravel-stubber" },
+    {
+      id: "3",
+      label: "laravel-stubber",
+      href: "https://packagist.org/packages/wilsn/laravel-stubber",
+    },
   ],
   createdProjects: [
-    { id: "1", label: "laravel-stubber", href: "https://packagist.org/packages/wilsn/laravel-stubber" },
-    { id: "2", label: "Slidev", href: "https://sli.dev" },
-    { id: "3", label: "VueUse", href: "https://vueuse.org" },
-    { id: "4", label: "UnoCSS", href: "https://unocss.dev" },
-    { id: "5", label: "Elk", href: "https://elk.zone" },
+    {
+      id: "1",
+      label: "laravel-stubber",
+      href: "https://packagist.org/packages/wilsn/laravel-stubber",
+    },
+    // { id: "2", label: "Slidev", href: "https://sli.dev" },
+    // { id: "3", label: "VueUse", href: "https://vueuse.org" },
+    // { id: "4", label: "UnoCSS", href: "https://unocss.dev" },
+    // { id: "5", label: "Elk", href: "https://elk.zone" },
   ],
   experiences: [
     {
@@ -40,15 +49,17 @@ export const INITIAL_HOME_DATA: HomeData = {
       href: "https://rkyconsults.com",
       location: "Remote / Nigeria",
       period: "2023 – Present",
-      description: "Full-stack development, open-source tooling, and mentoring.",
+      description:
+        "Full-stack development, open-source tooling, and mentoring.",
     },
     {
       id: "2",
-      role: "Frontend Developer",
-      company: "Some Startup",
-      location: "Lagos, Nigeria",
-      period: "2021 – 2023",
-      description: "Built modern web applications with Vue.js and Nuxt.",
+      role: "Software Engineer & Academy Lead",
+      company: "Softsuite Solutions",
+      href: "https://softsuite.com",
+      location: "Uyo, Nigeria",
+      period: "2021 – 2025",
+      description: "Built modern web applications with Vue.js, Nuxt, Nextjs, Laravel and Django.",
     },
     {
       id: "3",
@@ -59,164 +70,173 @@ export const INITIAL_HOME_DATA: HomeData = {
   ],
 
   certifications: [
-  // Cloud
-  {
-    id: "1",
-    name: "AWS Certified Developer – Associate",
-    issuer: "Amazon Web Services",
-    date: "Issued Sep 2023",
-    description: "Built and deployed serverless applications using AWS best practices.",
-    credentialLink: "https://www.credly.com/badges/aws-dev",
-    stack: "cloud"
-  },
-  {
-    id: "2",
-    name: "Google Professional Cloud Architect",
-    issuer: "Google Cloud",
-    date: "Issued Mar 2024",
-    description: "Architected dynamic, secure solutions on Google Cloud Platform.",
-    credentialLink: "https://www.credly.com/badges/gcp-architect",
-    stack: "cloud"
-  },
-  {
-    id: "3",
-    name: "Microsoft Certified: Azure Fundamentals",
-    issuer: "Microsoft",
-    date: "Issued Oct 2022",
-    description: "Cloud fundamentals and Azure services architecture knowledge.",
-    stack: "cloud"
-  },
+    // Cloud
+    {
+      id: "1",
+      name: "AWS Certified Developer – Associate",
+      issuer: "Amazon Web Services",
+      date: "Issued Sep 2023",
+      description:
+        "Built and deployed serverless applications using AWS best practices.",
+      credentialLink: "https://www.credly.com/badges/aws-dev",
+      stack: "cloud",
+    },
+    {
+      id: "2",
+      name: "Google Professional Cloud Architect",
+      issuer: "Google Cloud",
+      date: "Issued Mar 2024",
+      description:
+        "Architected dynamic, secure solutions on Google Cloud Platform.",
+      credentialLink: "https://www.credly.com/badges/gcp-architect",
+      stack: "cloud",
+    },
+    {
+      id: "3",
+      name: "Microsoft Certified: Azure Fundamentals",
+      issuer: "Microsoft",
+      date: "Issued Oct 2022",
+      description:
+        "Cloud fundamentals and Azure services architecture knowledge.",
+      stack: "cloud",
+    },
 
-  // DevOps
-  {
-    id: "4",
-    name: "Certified Kubernetes Administrator (CKA)",
-    issuer: "Cloud Native Computing Foundation",
-    date: "Issued Nov 2023",
-    description: "Deployed, managed, and troubleshot production Kubernetes clusters.",
-    credentialLink: "https://www.credly.com/badges/cka",
-    stack: "devops"
-  },
-  {
-    id: "5",
-    name: "Terraform Associate",
-    issuer: "HashiCorp",
-    date: "Issued Apr 2024",
-    description: "Infrastructure as Code expert using Terraform across multi-cloud.",
-    credentialLink: "https://www.credly.com/badges/terraform",
-    stack: "devops"
-  },
-  {
-    id: "6",
-    name: "Docker Certified Associate",
-    issuer: "Docker",
-    date: "Issued Jan 2023",
-    description: "Containerization expert across Docker ecosystem and orchestration.",
-    stack: "devops"
-  },
+    // DevOps
+    {
+      id: "4",
+      name: "Certified Kubernetes Administrator (CKA)",
+      issuer: "Cloud Native Computing Foundation",
+      date: "Issued Nov 2023",
+      description:
+        "Deployed, managed, and troubleshot production Kubernetes clusters.",
+      credentialLink: "https://www.credly.com/badges/cka",
+      stack: "devops",
+    },
+    {
+      id: "5",
+      name: "Terraform Associate",
+      issuer: "HashiCorp",
+      date: "Issued Apr 2024",
+      description:
+        "Infrastructure as Code expert using Terraform across multi-cloud.",
+      credentialLink: "https://www.credly.com/badges/terraform",
+      stack: "devops",
+    },
+    {
+      id: "6",
+      name: "Docker Certified Associate",
+      issuer: "Docker",
+      date: "Issued Jan 2023",
+      description:
+        "Containerization expert across Docker ecosystem and orchestration.",
+      stack: "devops",
+    },
 
-  // Security
-  {
-    id: "7",
-    name: "CompTIA Security+",
-    issuer: "CompTIA",
-    date: "Issued Dec 2021",
-    description: "Foundational cybersecurity knowledge and risk management best practices.",
-    credentialLink: "https://www.credly.com/badges/security-plus",
-    stack: "security"
-  },
-  {
-    id: "8",
-    name: "Certified Ethical Hacker (CEH)",
-    issuer: "EC-Council",
-    date: "Issued May 2023",
-    description: "Penetration testing and vulnerability assessment expertise.",
-    stack: "security"
-  },
+    // Security
+    {
+      id: "7",
+      name: "CompTIA Security+",
+      issuer: "CompTIA",
+      date: "Issued Dec 2021",
+      description:
+        "Foundational cybersecurity knowledge and risk management best practices.",
+      credentialLink: "https://www.credly.com/badges/security-plus",
+      stack: "security",
+    },
+    {
+      id: "8",
+      name: "Certified Ethical Hacker (CEH)",
+      issuer: "EC-Council",
+      date: "Issued May 2023",
+      description:
+        "Penetration testing and vulnerability assessment expertise.",
+      stack: "security",
+    },
 
-  // Engineering
-  {
-    id: "9",
-    name: "Legacy Responsive Web Design",
-    issuer: "FreeCodeCamp",
-    date: "Issued Sep 2022",
-    description: "Designed and built web projects.",
-    credentialLink: "https://www.freecodecamp.org/certification/wilsonabdiel/responsive-web-design",
-    stack: "engineering"
-  },
-  {
-    id: "10",
-    name: "JavaScript Algorithms and Data Structures",
-    issuer: "FreeCodeCamp",
-    date: "Issued Jan 2023",
-    description: "Mastered algorithms and data structures in JavaScript.",
-    stack: "engineering"
-  },
+    // Engineering
+    {
+      id: "9",
+      name: "Legacy Responsive Web Design",
+      issuer: "FreeCodeCamp",
+      date: "Issued Sep 2022",
+      description: "Designed and built web projects.",
+      credentialLink:
+        "https://www.freecodecamp.org/certification/wilsonabdiel/responsive-web-design",
+      stack: "engineering",
+    },
+    {
+      id: "10",
+      name: "JavaScript Algorithms and Data Structures",
+      issuer: "FreeCodeCamp",
+      date: "Issued Jan 2023",
+      description: "Mastered algorithms and data structures in JavaScript.",
+      stack: "engineering",
+    },
 
-  // Data & AI
-  {
-    id: "11",
-    name: "Google Professional Data Engineer",
-    issuer: "Google Cloud",
-    date: "Issued Jul 2024",
-    description: "Big data pipelines and ML model deployment on Google Cloud.",
-    credentialLink: "https://www.credly.com/badges/gcp-data",
-    stack: "data"
-  },
-  {
-    id: "12",
-    name: "AWS Certified Machine Learning – Specialty",
-    issuer: "Amazon Web Services",
-    date: "Issued Aug 2024",
-    description: "Machine learning models design and deployment on AWS.",
-    stack: "data"
-  },
-  {
-    id: "13",
-    name: "TensorFlow Developer Certificate",
-    issuer: "Google",
-    date: "Issued Jun 2024",
-    description: "Deep learning and neural networks with TensorFlow.",
-    stack: "data"
-  },
+    // Data & AI
+    {
+      id: "11",
+      name: "Google Professional Data Engineer",
+      issuer: "Google Cloud",
+      date: "Issued Jul 2024",
+      description:
+        "Big data pipelines and ML model deployment on Google Cloud.",
+      credentialLink: "https://www.credly.com/badges/gcp-data",
+      stack: "data",
+    },
+    {
+      id: "12",
+      name: "AWS Certified Machine Learning – Specialty",
+      issuer: "Amazon Web Services",
+      date: "Issued Aug 2024",
+      description: "Machine learning models design and deployment on AWS.",
+      stack: "data",
+    },
+    {
+      id: "13",
+      name: "TensorFlow Developer Certificate",
+      issuer: "Google",
+      date: "Issued Jun 2024",
+      description: "Deep learning and neural networks with TensorFlow.",
+      stack: "data",
+    },
 
-  // Programming
-  {
-    id: "14",
-    name: "Oracle Certified Professional: Java SE",
-    issuer: "Oracle",
-    date: "Issued Mar 2023",
-    description: "Advanced Java programming and object-oriented principles.",
-    stack: "programming"
-  },
-  {
-    id: "15",
-    name: "Python Institute PCEP",
-    issuer: "Python Institute",
-    date: "Issued Nov 2022",
-    description: "Python programming fundamentals and best practices.",
-    stack: "programming"
-  },
+    // Programming
+    {
+      id: "14",
+      name: "Oracle Certified Professional: Java SE",
+      issuer: "Oracle",
+      date: "Issued Mar 2023",
+      description: "Advanced Java programming and object-oriented principles.",
+      stack: "programming",
+    },
+    {
+      id: "15",
+      name: "Python Institute PCEP",
+      issuer: "Python Institute",
+      date: "Issued Nov 2022",
+      description: "Python programming fundamentals and best practices.",
+      stack: "programming",
+    },
 
-  // Database
-  {
-    id: "16",
-    name: "MongoDB Certified Developer",
-    issuer: "MongoDB Inc.",
-    date: "Issued Apr 2023",
-    description: "NoSQL database design and query optimization.",
-    stack: "database"
-  },
-  {
-    id: "17",
-    name: "PostgreSQL 14 Associate Certification",
-    issuer: "PostgreSQL",
-    date: "Issued Feb 2024",
-    description: "Relational database management and SQL optimization.",
-    stack: "database"
-  }
-]
-
+    // Database
+    {
+      id: "16",
+      name: "MongoDB Certified Developer",
+      issuer: "MongoDB Inc.",
+      date: "Issued Apr 2023",
+      description: "NoSQL database design and query optimization.",
+      stack: "database",
+    },
+    {
+      id: "17",
+      name: "PostgreSQL 14 Associate Certification",
+      issuer: "PostgreSQL",
+      date: "Issued Feb 2024",
+      description: "Relational database management and SQL optimization.",
+      stack: "database",
+    },
+  ],
 };
 
 export const INITIAL_PROJECTS: Project[] = [
@@ -329,6 +349,4 @@ export const INITIAL_USE_SECTIONS: ToolSection[] = [
       "Logitech MX Master 3S",
     ],
   },
-
-  
 ];

@@ -185,7 +185,7 @@ const App: React.FC = () => {
                   <Route path="/photos" element={<Photos />} />
                   <Route path="/media" element={<Media />} />
                   <Route path="/use" element={<Use />} />
-                  <Route path="/login" element={<Login />} />
+                  <Route path="/kuyik" element={<Login />} />
                   <Route path="/admin" element={isAuthenticated ? <Admin /> : <Navigate to="/login" />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>

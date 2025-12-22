@@ -11,7 +11,7 @@ const Media: React.FC = () => {
     <div className="space-y-12">
       <header>
         <h1 className="text-3xl font-bold mb-2">Media</h1>
-        <p className="opacity-50">Appearances on podcasts, videos, and interviews.</p>
+        <p className="opacity-50 dark:opacity-70">Appearances on podcasts, videos, and interviews.</p>
       </header>
 
       <div className="space-y-6">
@@ -26,7 +26,7 @@ const Media: React.FC = () => {
             </div>
             <div>
               <h3 className="font-medium group-hover:text-black dark:group-hover:text-white transition-colors">{item.title}</h3>
-              <span className="text-xs opacity-30 uppercase tracking-widest">{item.type}</span>
+              <span className="text-xs opacity-30 dark:opacity-50 uppercase tracking-widest">{item.type}</span>
             </div>
           </a>
         ))}

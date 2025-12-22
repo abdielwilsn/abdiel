@@ -107,7 +107,7 @@ const CertStack: React.FC<StackProps> = ({
             {title}
           </h3>
         </div>
-        <p className="text-xs md:text-sm opacity-70 mt-1">
+        <p className="text-xs md:text-sm opacity-70 dark:opacity-80 mt-1">
           {certifications.length} certifications
         </p>
       </div>
@@ -159,14 +159,14 @@ const CertStack: React.FC<StackProps> = ({
                     <h4 className="font-semibold text-xs md:text-sm leading-tight line-clamp-2">
                       {cert.name}
                     </h4>
-                    <p className="text-[10px] md:text-xs opacity-90 mt-0.5">{cert.issuer}</p>
+                    <p className="text-[10px] md:text-xs opacity-90 dark:opacity-95 mt-0.5">{cert.issuer}</p>
                   </div>
 
                   <div className="flex justify-between items-end gap-1.5">
-                    <span className="text-[9px] md:text-[10px] bg-muted/60 px-1.5 py-0.5 rounded-full opacity-90 whitespace-nowrap">
+                    <span className="text-[9px] md:text-[10px] bg-muted/60 px-1.5 py-0.5 rounded-full opacity-90 dark:opacity-95 whitespace-nowrap">
                       {cert.date}
                     </span>
-                    <p className="text-[9px] md:text-[10px] opacity-80 leading-relaxed line-clamp-2 flex-1">
+                    <p className="text-[9px] md:text-[10px] opacity-80 dark:opacity-90 leading-relaxed line-clamp-2 flex-1">
                       {cert.description}
                     </p>
                   </div>

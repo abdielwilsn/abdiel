@@ -14,7 +14,7 @@ const Categories: React.FC = () => {
     <div className="space-y-12">
       <header>
         <h1 className="text-3xl font-bold mb-2">Categories</h1>
-        <p className="opacity-50">Browse posts by topic.</p>
+        <p className="opacity-50 dark:opacity-70">Browse posts by topic.</p>
       </header>
 
       <div className="flex flex-wrap gap-4">
@@ -24,10 +24,10 @@ const Categories: React.FC = () => {
             <Link
               key={cat}
               to={`/categories/${cat}`}
-              className="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-black dark:hover:text-white transition-all flex items-center gap-3 group"
+              className="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 transition-all flex items-center gap-3 group"
             >
               <span className="capitalize">{cat}</span>
-              <span className="text-xs opacity-40 group-hover:opacity-100">{count}</span>
+              <span className="text-xs opacity-40 dark:opacity-60 group-hover:opacity-100">{count}</span>
             </Link>
           );
         })}

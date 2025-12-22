@@ -60,7 +60,7 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({ experiences }) =>
           </div>
         ))}
       </div>
-      <p className="text-xs text-center opacity-50 md:hidden">
+      <p className="text-xs text-center opacity-50 dark:opacity-70 md:hidden">
         Swipe to explore →
       </p>
     </section>
