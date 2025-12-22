@@ -246,16 +246,16 @@ const Navbar: React.FC<NavbarProps> = ({
               {item.label}
             </NavLink>
           ))}
-          {/* <NavLink
-            to={isAuthenticated ? "/admin" : "/login"}
+          <NavLink
+            to={isAuthenticated ? "/admin" : ""}
             className={({ isActive }) => `
               text-[13px] tracking-wide transition-opacity hover:opacity-100
               ${isActive ? "opacity-100 font-medium" : "opacity-50"}
               px-2 py-0.5 border border-transparent rounded hover:border-gray-200 dark:hover:border-gray-800
             `}
           >
-            {isAuthenticated ? "Admin" : "Login"}
-          </NavLink> */}
+            {isAuthenticated ? "Admin" : ""}
+          </NavLink>
         </div>
 
         {/* Action Icons - Always visible */}
