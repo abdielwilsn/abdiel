@@ -58,6 +58,20 @@ const SecurityIcon = () => (
   </svg>
 );
 
+const EngineeringIcon = () => (
+  <svg
+    className="w-12 h-12 md:w-14 md:h-14 text-foreground"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+  </svg>
+);
+
 const CertStack: React.FC<StackProps> = ({
   title,
   icon,
@@ -75,46 +89,46 @@ const CertStack: React.FC<StackProps> = ({
 
   return (
     <motion.div
-      className="relative min-h-[400px] md:min-h-[600px] flex flex-col items-center pb-4 md:pb-8"
+      className="relative min-h-[350px] md:min-h-[450px] flex flex-col items-center pb-4 md:pb-6"
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
     >
       {/* Header - icon and title side by side in black & white */}
-      <div className="text-center mb-8 md:mb-16">
-        <div className="flex items-center justify-center gap-3 mb-3">
-          <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">
+      <div className="text-center mb-6 md:mb-12">
+        <div className="flex items-center justify-center gap-2 mb-2">
+          <div className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center">
             {React.cloneElement(icon as React.ReactElement, {
               className: "w-full h-full text-foreground"
             })}
           </div>
-          <h3 className="text-lg md:text-xl font-bold text-foreground">
+          <h3 className="text-base md:text-lg font-bold text-foreground">
             {title}
           </h3>
         </div>
-        <p className="text-sm md:text-base opacity-70 mt-2">
+        <p className="text-xs md:text-sm opacity-70 mt-1">
           {certifications.length} certifications
         </p>
       </div>
 
       {/* Stack Container */}
-      <div className="relative w-56 md:w-72 min-h-[350px] flex flex-col items-center justify-start">
+      <div className="relative w-48 md:w-56 min-h-[280px] flex flex-col items-center justify-start">
         <AnimatePresence>
           {certifications.map((cert, index) => {
             const isTop = topCardId === cert.id;
             const zIndex = isTop ? 100 : certifications.length - index;
-            const verticalOffset = index * 40;
-            const horizontalOffset = index * 8;
-            const scale = isTop ? 1.12 : 0.88 + index * 0.04;
+            const verticalOffset = index * 32;
+            const horizontalOffset = index * 6;
+            const scale = isTop ? 1.08 : 0.90 + index * 0.03;
 
             return (
               <motion.div
                 key={cert.id}
                 className={`
-                  absolute w-full p-3 md:p-4 bg-card/95 backdrop-blur-lg border border-border/40
+                  absolute w-full p-2.5 md:p-3 bg-card/95 backdrop-blur-lg border border-border/40
                   rounded-lg shadow-2xl cursor-pointer overflow-hidden
-                  ${isTop ? 'scale-115 border-primary/70 shadow-3xl z-50' : 'opacity-90 hover:opacity-100'}
+                  ${isTop ? 'scale-110 border-primary/70 shadow-3xl z-50' : 'opacity-90 hover:opacity-100'}
                   hover:shadow-3xl hover:border-primary/50 hover:scale-105 hover:z-40
                   transition-all duration-500
                 `}
@@ -140,19 +154,19 @@ const CertStack: React.FC<StackProps> = ({
                 }}
                 onClick={() => handleCardClick(cert)}
               >
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   <div>
-                    <h4 className="font-semibold text-sm md:text-base leading-tight line-clamp-2">
+                    <h4 className="font-semibold text-xs md:text-sm leading-tight line-clamp-2">
                       {cert.name}
                     </h4>
-                    <p className="text-xs md:text-sm opacity-90 mt-1">{cert.issuer}</p>
+                    <p className="text-[10px] md:text-xs opacity-90 mt-0.5">{cert.issuer}</p>
                   </div>
 
-                  <div className="flex justify-between items-end gap-2">
-                    <span className="text-xs bg-muted/60 px-2 py-1 rounded-full opacity-90 whitespace-nowrap">
+                  <div className="flex justify-between items-end gap-1.5">
+                    <span className="text-[9px] md:text-[10px] bg-muted/60 px-1.5 py-0.5 rounded-full opacity-90 whitespace-nowrap">
                       {cert.date}
                     </span>
-                    <p className="text-xs opacity-80 leading-relaxed line-clamp-2 flex-1">
+                    <p className="text-[9px] md:text-[10px] opacity-80 leading-relaxed line-clamp-2 flex-1">
                       {cert.description}
                     </p>
                   </div>

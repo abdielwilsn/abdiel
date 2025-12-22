@@ -58,22 +58,11 @@ export const INITIAL_HOME_DATA: HomeData = {
     },
   ],
 
-  // In your INITIAL_HOME_DATA object
-// In your data file
-certifications: [
-  // Stack 1: Cloud & AWS
+  certifications: [
+  // Cloud
   {
     id: "1",
-    name: "AWS Certified Solutions Architect – Associate",
-    issuer: "Amazon Web Services",
-    date: "Issued Jun 2023",
-    description: "Designed scalable, secure, and cost-effective cloud architectures on AWS.",
-    credentialLink: "https://www.credly.com/badges/aws-sa",
-    stack: "cloud" // Group into stacks
-  },
-  {
-    id: "2",
-    name: "AWS Certified Developer – Associate", 
+    name: "AWS Certified Developer – Associate",
     issuer: "Amazon Web Services",
     date: "Issued Sep 2023",
     description: "Built and deployed serverless applications using AWS best practices.",
@@ -81,7 +70,7 @@ certifications: [
     stack: "cloud"
   },
   {
-    id: "3",
+    id: "2",
     name: "Google Professional Cloud Architect",
     issuer: "Google Cloud",
     date: "Issued Mar 2024",
@@ -89,8 +78,16 @@ certifications: [
     credentialLink: "https://www.credly.com/badges/gcp-architect",
     stack: "cloud"
   },
+  {
+    id: "3",
+    name: "Microsoft Certified: Azure Fundamentals",
+    issuer: "Microsoft",
+    date: "Issued Oct 2022",
+    description: "Cloud fundamentals and Azure services architecture knowledge.",
+    stack: "cloud"
+  },
 
-  // Stack 2: DevOps & Containers
+  // DevOps
   {
     id: "4",
     name: "Certified Kubernetes Administrator (CKA)",
@@ -118,7 +115,7 @@ certifications: [
     stack: "devops"
   },
 
-  // Stack 3: Security & Other
+  // Security
   {
     id: "7",
     name: "CompTIA Security+",
@@ -130,28 +127,93 @@ certifications: [
   },
   {
     id: "8",
-    name: "Certified Scrum Master (CSM)",
-    issuer: "Scrum Alliance",
-    date: "Issued Feb 2022",
-    description: "Agile leadership facilitating Scrum ceremonies and team delivery.",
+    name: "Certified Ethical Hacker (CEH)",
+    issuer: "EC-Council",
+    date: "Issued May 2023",
+    description: "Penetration testing and vulnerability assessment expertise.",
     stack: "security"
   },
+
+  // Engineering
   {
     id: "9",
-    name: "Microsoft Certified: Azure Fundamentals",
-    issuer: "Microsoft",
-    date: "Issued Oct 2022",
-    description: "Cloud fundamentals and Azure services architecture knowledge.",
-    stack: "security"
+    name: "Legacy Responsive Web Design",
+    issuer: "FreeCodeCamp",
+    date: "Issued Sep 2022",
+    description: "Designed and built web projects.",
+    credentialLink: "https://www.freecodecamp.org/certification/wilsonabdiel/responsive-web-design",
+    stack: "engineering"
   },
   {
     id: "10",
+    name: "JavaScript Algorithms and Data Structures",
+    issuer: "FreeCodeCamp",
+    date: "Issued Jan 2023",
+    description: "Mastered algorithms and data structures in JavaScript.",
+    stack: "engineering"
+  },
+
+  // Data & AI
+  {
+    id: "11",
     name: "Google Professional Data Engineer",
     issuer: "Google Cloud",
     date: "Issued Jul 2024",
     description: "Big data pipelines and ML model deployment on Google Cloud.",
     credentialLink: "https://www.credly.com/badges/gcp-data",
-    stack: "security"
+    stack: "data"
+  },
+  {
+    id: "12",
+    name: "AWS Certified Machine Learning – Specialty",
+    issuer: "Amazon Web Services",
+    date: "Issued Aug 2024",
+    description: "Machine learning models design and deployment on AWS.",
+    stack: "data"
+  },
+  {
+    id: "13",
+    name: "TensorFlow Developer Certificate",
+    issuer: "Google",
+    date: "Issued Jun 2024",
+    description: "Deep learning and neural networks with TensorFlow.",
+    stack: "data"
+  },
+
+  // Programming
+  {
+    id: "14",
+    name: "Oracle Certified Professional: Java SE",
+    issuer: "Oracle",
+    date: "Issued Mar 2023",
+    description: "Advanced Java programming and object-oriented principles.",
+    stack: "programming"
+  },
+  {
+    id: "15",
+    name: "Python Institute PCEP",
+    issuer: "Python Institute",
+    date: "Issued Nov 2022",
+    description: "Python programming fundamentals and best practices.",
+    stack: "programming"
+  },
+
+  // Database
+  {
+    id: "16",
+    name: "MongoDB Certified Developer",
+    issuer: "MongoDB Inc.",
+    date: "Issued Apr 2023",
+    description: "NoSQL database design and query optimization.",
+    stack: "database"
+  },
+  {
+    id: "17",
+    name: "PostgreSQL 14 Associate Certification",
+    issuer: "PostgreSQL",
+    date: "Issued Feb 2024",
+    description: "Relational database management and SQL optimization.",
+    stack: "database"
   }
 ]
 

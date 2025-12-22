@@ -27,6 +27,73 @@ const SecurityIcon = () => (
   </svg>
 );
 
+const EngineeringIcon = () => (
+  <svg className="w-12 h-12 md:w-14 md:h-14 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+  </svg>
+);
+
+const DataIcon = () => (
+  <svg className="w-12 h-12 md:w-14 md:h-14 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2c-4.418 0-8 1.791-8 4v12c0 2.209 3.582 4 8 4s8-1.791 8-4V6c0-2.209-3.582-4-8-4z" />
+    <path d="M4 12c0 2.209 3.582 4 8 4s8-1.791 8-4M4 18c0 2.209 3.582 4 8 4s8-1.791 8-4" />
+  </svg>
+);
+
+const ProgrammingIcon = () => (
+  <svg className="w-12 h-12 md:w-14 md:h-14 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="16 18 22 12 16 6" />
+    <polyline points="8 6 2 12 8 18" />
+  </svg>
+);
+
+const DatabaseIcon = () => (
+  <svg className="w-12 h-12 md:w-14 md:h-14 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <ellipse cx="12" cy="5" rx="9" ry="3" />
+    <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" />
+    <path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3" />
+  </svg>
+);
+
+// Stack configuration mapping
+const stackConfig: Record<string, { title: string; icon: React.ReactElement; color: string }> = {
+  cloud: {
+    title: "Cloud Architecture",
+    icon: <CloudIcon />,
+    color: "from-blue-500 to-indigo-600"
+  },
+  devops: {
+    title: "DevOps & Infra",
+    icon: <DevOpsIcon />,
+    color: "from-green-500 to-emerald-600"
+  },
+  security: {
+    title: "Security",
+    icon: <SecurityIcon />,
+    color: "from-purple-500 to-pink-600"
+  },
+  engineering: {
+    title: "Engineering",
+    icon: <EngineeringIcon />,
+    color: "from-orange-500 to-red-600"
+  },
+  data: {
+    title: "Data & AI",
+    icon: <DataIcon />,
+    color: "from-cyan-500 to-blue-600"
+  },
+  programming: {
+    title: "Programming",
+    icon: <ProgrammingIcon />,
+    color: "from-yellow-500 to-orange-600"
+  },
+  database: {
+    title: "Database",
+    icon: <DatabaseIcon />,
+    color: "from-teal-500 to-green-600"
+  }
+};
+
 interface CertificationsSectionProps {
   certifications: Certification[];
 }
@@ -36,9 +103,17 @@ const CertificationsSection: React.FC<CertificationsSectionProps> = ({
 }) => {
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
 
-  const cloudCerts = certifications?.filter((c) => c.stack === "cloud") || [];
-  const devopsCerts = certifications?.filter((c) => c.stack === "devops") || [];
-  const securityCerts = certifications?.filter((c) => c.stack === "security") || [];
+  // Dynamically group certifications by stack
+  const groupedCerts = certifications.reduce((acc, cert) => {
+    if (!acc[cert.stack]) {
+      acc[cert.stack] = [];
+    }
+    acc[cert.stack].push(cert);
+    return acc;
+  }, {} as Record<string, Certification[]>);
+
+  // Get all unique stacks that have certifications
+  const stacks = Object.keys(groupedCerts).filter(stack => stackConfig[stack]);
 
   return (
     <section className="space-y-8 md:space-y-16 py-8 md:py-12">
@@ -47,35 +122,25 @@ const CertificationsSection: React.FC<CertificationsSectionProps> = ({
           Certifications
         </h2>
         <p className="text-xl opacity-70 max-w-2xl mx-auto">
-          Explore my technical achievements across cloud, DevOps, and security
+          Explore my technical achievements across {stacks.length} specialized areas
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-24 lg:gap-32 max-w-7xl mx-auto px-4">
-        <CertStack
-          title="Cloud Architecture"
-          icon={<CloudIcon />}
-          color="from-blue-500 to-indigo-600"
-          certifications={cloudCerts}
-          selectedCert={selectedCert}
-          onSelectCert={setSelectedCert}
-        />
-        <CertStack
-          title="DevOps & Infra"
-          icon={<DevOpsIcon />}
-          color="from-green-500 to-emerald-600"
-          certifications={devopsCerts}
-          selectedCert={selectedCert}
-          onSelectCert={setSelectedCert}
-        />
-        <CertStack
-          title="Security & Agile"
-          icon={<SecurityIcon />}
-          color="from-purple-500 to-pink-600"
-          certifications={securityCerts}
-          selectedCert={selectedCert}
-          onSelectCert={setSelectedCert}
-        />
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 lg:gap-20 max-w-7xl mx-auto px-4">
+        {stacks.map((stackKey) => {
+          const config = stackConfig[stackKey];
+          return (
+            <CertStack
+              key={stackKey}
+              title={config.title}
+              icon={config.icon}
+              color={config.color}
+              certifications={groupedCerts[stackKey]}
+              selectedCert={selectedCert}
+              onSelectCert={setSelectedCert}
+            />
+          );
+        })}
       </div>
 
       {/* Modal remains unchanged */}
