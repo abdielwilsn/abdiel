@@ -1,4 +1,3 @@
-
 export interface Project {
   id: string;
   name: string;
@@ -30,7 +29,7 @@ export interface MediaItem {
   id: string;
   title: string;
   link: string;
-  type: 'video' | 'podcast' | 'article';
+  type: "video" | "podcast" | "article";
 }
 
 export interface BadgeItem {
@@ -51,6 +50,29 @@ export interface ToolSection {
   items: string[];
 }
 
+export interface Experience {
+  id: string;
+  role: string;
+  company: string;
+  href?: string; // optional: company/website link
+  location?: string; // optional: city/remote
+  period: string; // e.g. "2023 – Present"
+  description?: string; // optional short description
+}
+
+export interface Certification {
+  id: string;
+  name: string; // e.g. "AWS Certified Solutions Architect"
+  issuer: string; // e.g. "Amazon Web Services"
+  issuerHref?: string; // optional link to issuer site
+  date: string; // e.g. "Issued Jun 2023"
+  credentialId?: string; // optional: e.g. "ABC123XYZ"
+  credentialLink?: string; // optional: link to verify (e.g. Credly, LinkedIn)
+  logo?: string; // optional: URL to issuer logo (for nicer visuals)
+  description: string;
+  stack: "cloud" | "devops" | "security"; // New field
+}
+
 export interface HomeData {
   name: string;
   bioTitle: string;
@@ -58,4 +80,6 @@ export interface HomeData {
   coreTeam: BadgeItem[];
   maintaining: BadgeItem[];
   createdProjects: BadgeItem[];
+  experiences: Experience[];
+  certifications: Certification[];
 }

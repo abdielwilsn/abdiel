@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Badge from "../components/Badge";
 import BadgeGroup from "../components/BadgeGroup";
 import { useData } from "../App";
+import { motion, AnimatePresence } from "framer-motion";
+import { Dialog } from "@headlessui/react";
+
+// Import types and CertStack component
+import { Certification } from "../types"; // Adjust path if needed
+import CertStack from "../components/CertStack"; // Make sure this file exists
 
 const Home: React.FC = () => {
   const { homeData } = useData();
 
+  // State for selected certification modal
+  const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
+
   return (
     <div className="space-y-12">
+      {/* Hero / Name + Bio */}
       <section className="text-center md:text-left">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">{homeData.name}</h1>
         <p className="text-xl md:text-2xl leading-relaxed opacity-80 font-light">
@@ -15,6 +25,7 @@ const Home: React.FC = () => {
         </p>
       </section>
 
+      {/* Affiliations / Core Team / Maintaining */}
       <section className="space-y-2 opacity-90">
         <p>
           Working at{" "}
@@ -45,6 +56,7 @@ const Home: React.FC = () => {
         </p>
       </section>
 
+      {/* Created Projects */}
       <section>
         <BadgeGroup title="CREATED PROJECTS">
           {homeData.createdProjects.map((p) => (
@@ -55,6 +67,7 @@ const Home: React.FC = () => {
         </BadgeGroup>
       </section>
 
+      {/* About Paragraphs */}
       <section className="prose dark:prose-invert max-w-none opacity-80 leading-7 space-y-4">
         <p>
           I love dreaming up ideas and then engineering them into reality. From
@@ -78,6 +91,169 @@ const Home: React.FC = () => {
         </p>
       </section>
 
+      {/* Experience Section */}
+      <section className="space-y-6">
+        <h2 className="text-2xl font-bold tracking-tight">Experience</h2>
+        <div className="overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory flex gap-6 md:gap-8">
+          {homeData.experiences.map((exp) => (
+            <div
+              key={exp.id}
+              className="min-w-[300px] md:min-w-[380px] flex-shrink-0 snap-center p-6 bg-card/50 backdrop-blur-sm border border-border rounded-xl transition-all hover:scale-[1.03] hover:shadow-lg hover:border-primary/50 duration-300"
+            >
+              <div className="flex flex-col h-full">
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 className="text-xl font-semibold">{exp.role}</h3>
+                    {exp.href ? (
+                      <a
+                        href={exp.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline text-sm mt-1 inline-block"
+                      >
+                        {exp.company}
+                      </a>
+                    ) : (
+                      <p className="text-sm opacity-80 mt-1">{exp.company}</p>
+                    )}
+                  </div>
+                  <div className="text-right text-sm opacity-70 whitespace-nowrap">
+                    {exp.period}
+                    {exp.location && (
+                      <span className="block text-xs opacity-50">
+                        {exp.location}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {exp.description && (
+                  <p className="text-sm opacity-80 leading-relaxed mt-auto">
+                    {exp.description}
+                  </p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className="text-xs text-center opacity-50 md:hidden">
+          Swipe to explore →
+        </p>
+      </section>
+
+      {/* Certifications Stacks Section */}
+<section className="space-y-32 py-40">
+          <div className="text-center">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            Certifications
+          </h2>
+          <p className="text-xl opacity-70 max-w-2xl mx-auto">
+            Explore my technical achievements across cloud, DevOps, and security
+          </p>
+        </div>
+
+        {/* 3 Stacks Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-24 md:gap-40 lg:gap-56 max-w-7xl mx-auto px-4">
+  <CertStack
+    title="Cloud Architecture"
+    icon="☁️"
+    color="from-blue-500 to-indigo-600"
+    certifications={homeData.certifications?.filter((c) => c.stack === "cloud") || []}
+    selectedCert={selectedCert}
+    onSelectCert={setSelectedCert}
+  />
+
+  <CertStack
+    title="DevOps & Infra"
+    icon="⚙️"
+    color="from-green-500 to-emerald-600"
+    certifications={homeData.certifications?.filter((c) => c.stack === "devops") || []}
+    selectedCert={selectedCert}
+    onSelectCert={setSelectedCert}
+  />
+
+  <CertStack
+    title="Security & Agile"
+    icon="🛡️"
+    color="from-purple-500 to-pink-600"
+    certifications={homeData.certifications?.filter((c) => c.stack === "security") || []}
+    selectedCert={selectedCert}
+    onSelectCert={setSelectedCert}
+  />
+</div>
+
+        {/* Modal */}
+        <AnimatePresence>
+          {selectedCert && (
+            <Dialog
+              open={!!selectedCert}
+              onClose={() => setSelectedCert(null)}
+              className="relative z-50"
+            >
+              {/* Overlay */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+              />
+
+              {/* Modal Content */}
+              <div className="fixed inset-0 flex items-center justify-center p-4">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.85, y: 50 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.85, y: 50 }}
+                  transition={{ type: "spring", damping: 20, stiffness: 300 }}
+                  className="w-full max-w-2xl bg-card/95 backdrop-blur-lg border border-border/50 rounded-2xl shadow-2xl p-8 relative"
+                >
+                  <button
+                    onClick={() => setSelectedCert(null)}
+                    className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition"
+                  >
+                    ✕
+                  </button>
+
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-2xl font-bold">
+                        {selectedCert.name}
+                      </h3>
+                      <div className="flex items-center gap-3 mt-2">
+                        <p className="text-lg opacity-80">
+                          {selectedCert.issuer}
+                        </p>
+                        <span className="text-sm bg-muted/50 px-3 py-1 rounded-md opacity-70">
+                          {selectedCert.date}
+                        </span>
+                      </div>
+                    </div>
+
+                    {selectedCert.description && (
+                      <p className="text-base leading-relaxed opacity-90">
+                        {selectedCert.description}
+                      </p>
+                    )}
+
+                    {selectedCert.credentialLink && (
+                      <a
+                        href={selectedCert.credentialLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition"
+                      >
+                        View Credential →
+                      </a>
+                    )}
+                  </div>
+                </motion.div>
+              </div>
+            </Dialog>
+          )}
+        </AnimatePresence>
+      </section>
+
+      {/* Social Links */}
       <section className="space-y-6">
         <h2 className="text-lg font-medium opacity-50 flex items-center gap-2">
           Find me on
@@ -149,6 +325,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+
+      {/* Email */}
       <section className="pt-8 flex flex-col items-center md:items-start gap-4">
         <p className="text-sm opacity-40">
           Or mail me at{" "}

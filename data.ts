@@ -32,6 +32,129 @@ export const INITIAL_HOME_DATA: HomeData = {
     { id: "4", label: "UnoCSS", href: "https://unocss.dev" },
     { id: "5", label: "Elk", href: "https://elk.zone" },
   ],
+  experiences: [
+    {
+      id: "1",
+      role: "Software Engineer",
+      company: "RkyConsults",
+      href: "https://rkyconsults.com",
+      location: "Remote / Nigeria",
+      period: "2023 – Present",
+      description: "Full-stack development, open-source tooling, and mentoring.",
+    },
+    {
+      id: "2",
+      role: "Frontend Developer",
+      company: "Some Startup",
+      location: "Lagos, Nigeria",
+      period: "2021 – 2023",
+      description: "Built modern web applications with Vue.js and Nuxt.",
+    },
+    {
+      id: "3",
+      role: "Web Developer",
+      company: "Freelance",
+      period: "2019 – 2021",
+    },
+  ],
+
+  // In your INITIAL_HOME_DATA object
+// In your data file
+certifications: [
+  // Stack 1: Cloud & AWS
+  {
+    id: "1",
+    name: "AWS Certified Solutions Architect – Associate",
+    issuer: "Amazon Web Services",
+    date: "Issued Jun 2023",
+    description: "Designed scalable, secure, and cost-effective cloud architectures on AWS.",
+    credentialLink: "https://www.credly.com/badges/aws-sa",
+    stack: "cloud" // Group into stacks
+  },
+  {
+    id: "2",
+    name: "AWS Certified Developer – Associate", 
+    issuer: "Amazon Web Services",
+    date: "Issued Sep 2023",
+    description: "Built and deployed serverless applications using AWS best practices.",
+    credentialLink: "https://www.credly.com/badges/aws-dev",
+    stack: "cloud"
+  },
+  {
+    id: "3",
+    name: "Google Professional Cloud Architect",
+    issuer: "Google Cloud",
+    date: "Issued Mar 2024",
+    description: "Architected dynamic, secure solutions on Google Cloud Platform.",
+    credentialLink: "https://www.credly.com/badges/gcp-architect",
+    stack: "cloud"
+  },
+
+  // Stack 2: DevOps & Containers
+  {
+    id: "4",
+    name: "Certified Kubernetes Administrator (CKA)",
+    issuer: "Cloud Native Computing Foundation",
+    date: "Issued Nov 2023",
+    description: "Deployed, managed, and troubleshot production Kubernetes clusters.",
+    credentialLink: "https://www.credly.com/badges/cka",
+    stack: "devops"
+  },
+  {
+    id: "5",
+    name: "Terraform Associate",
+    issuer: "HashiCorp",
+    date: "Issued Apr 2024",
+    description: "Infrastructure as Code expert using Terraform across multi-cloud.",
+    credentialLink: "https://www.credly.com/badges/terraform",
+    stack: "devops"
+  },
+  {
+    id: "6",
+    name: "Docker Certified Associate",
+    issuer: "Docker",
+    date: "Issued Jan 2023",
+    description: "Containerization expert across Docker ecosystem and orchestration.",
+    stack: "devops"
+  },
+
+  // Stack 3: Security & Other
+  {
+    id: "7",
+    name: "CompTIA Security+",
+    issuer: "CompTIA",
+    date: "Issued Dec 2021",
+    description: "Foundational cybersecurity knowledge and risk management best practices.",
+    credentialLink: "https://www.credly.com/badges/security-plus",
+    stack: "security"
+  },
+  {
+    id: "8",
+    name: "Certified Scrum Master (CSM)",
+    issuer: "Scrum Alliance",
+    date: "Issued Feb 2022",
+    description: "Agile leadership facilitating Scrum ceremonies and team delivery.",
+    stack: "security"
+  },
+  {
+    id: "9",
+    name: "Microsoft Certified: Azure Fundamentals",
+    issuer: "Microsoft",
+    date: "Issued Oct 2022",
+    description: "Cloud fundamentals and Azure services architecture knowledge.",
+    stack: "security"
+  },
+  {
+    id: "10",
+    name: "Google Professional Data Engineer",
+    issuer: "Google Cloud",
+    date: "Issued Jul 2024",
+    description: "Big data pipelines and ML model deployment on Google Cloud.",
+    credentialLink: "https://www.credly.com/badges/gcp-data",
+    stack: "security"
+  }
+]
+
 };
 
 export const INITIAL_PROJECTS: Project[] = [
@@ -144,4 +267,6 @@ export const INITIAL_USE_SECTIONS: ToolSection[] = [
       "Logitech MX Master 3S",
     ],
   },
+
+  
 ];
