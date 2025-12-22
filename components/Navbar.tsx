@@ -488,7 +488,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 </NavLink>
               ))}
 
-              <div className="border-t border-gray-200 dark:border-gray-800 pt-4 mt-4">
+              {/* <div className="border-t border-gray-200 dark:border-gray-800 pt-4 mt-4">
                 <NavLink
                   to={isAuthenticated ? "/admin" : "/login"}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -503,7 +503,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 >
                   {isAuthenticated ? "Admin" : "Login"}
                 </NavLink>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
