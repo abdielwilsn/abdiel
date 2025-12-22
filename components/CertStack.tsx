@@ -75,14 +75,14 @@ const CertStack: React.FC<StackProps> = ({
 
   return (
     <motion.div
-      className="relative min-h-[800px] md:min-h-[1000px] flex flex-col items-center pb-20"
+      className="relative min-h-[400px] md:min-h-[600px] flex flex-col items-center pb-4 md:pb-8"
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
     >
       {/* Header - icon and title side by side in black & white */}
-      <div className="text-center mb-16 md:mb-24">
+      <div className="text-center mb-8 md:mb-16">
         <div className="flex items-center justify-center gap-3 mb-3">
           <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">
             {React.cloneElement(icon as React.ReactElement, {
@@ -99,21 +99,21 @@ const CertStack: React.FC<StackProps> = ({
       </div>
 
       {/* Stack Container */}
-      <div className="relative w-64 md:w-80 min-h-[400px] flex flex-col items-center justify-start">
+      <div className="relative w-56 md:w-72 min-h-[350px] flex flex-col items-center justify-start">
         <AnimatePresence>
           {certifications.map((cert, index) => {
             const isTop = topCardId === cert.id;
             const zIndex = isTop ? 100 : certifications.length - index;
-            const verticalOffset = index * 50;
-            const horizontalOffset = index * 10;
+            const verticalOffset = index * 40;
+            const horizontalOffset = index * 8;
             const scale = isTop ? 1.12 : 0.88 + index * 0.04;
 
             return (
               <motion.div
                 key={cert.id}
                 className={`
-                  absolute w-full p-4 md:p-5 bg-card/95 backdrop-blur-lg border border-border/40
-                  rounded-xl shadow-2xl cursor-pointer overflow-hidden
+                  absolute w-full p-3 md:p-4 bg-card/95 backdrop-blur-lg border border-border/40
+                  rounded-lg shadow-2xl cursor-pointer overflow-hidden
                   ${isTop ? 'scale-115 border-primary/70 shadow-3xl z-50' : 'opacity-90 hover:opacity-100'}
                   hover:shadow-3xl hover:border-primary/50 hover:scale-105 hover:z-40
                   transition-all duration-500
@@ -129,7 +129,7 @@ const CertStack: React.FC<StackProps> = ({
                   scale,
                   opacity: 1,
                   rotateX: isTop ? 0 : 25,
-                  y: isTop ? -60 : verticalOffset,
+                  y: isTop ? -50 : verticalOffset,
                   x: isTop ? 0 : horizontalOffset,
                 }}
                 transition={{
@@ -140,19 +140,19 @@ const CertStack: React.FC<StackProps> = ({
                 }}
                 onClick={() => handleCardClick(cert)}
               >
-                <div className="space-y-3">
+                <div className="space-y-2">
                   <div>
-                    <h4 className="font-semibold text-base md:text-lg leading-tight line-clamp-2">
+                    <h4 className="font-semibold text-sm md:text-base leading-tight line-clamp-2">
                       {cert.name}
                     </h4>
-                    <p className="text-sm md:text-base opacity-90 mt-1">{cert.issuer}</p>
+                    <p className="text-xs md:text-sm opacity-90 mt-1">{cert.issuer}</p>
                   </div>
 
-                  <div className="flex justify-between items-end gap-3">
-                    <span className="text-xs md:text-sm bg-muted/60 px-3 py-1.5 rounded-full opacity-90 whitespace-nowrap">
+                  <div className="flex justify-between items-end gap-2">
+                    <span className="text-xs bg-muted/60 px-2 py-1 rounded-full opacity-90 whitespace-nowrap">
                       {cert.date}
                     </span>
-                    <p className="text-xs md:text-sm opacity-80 leading-relaxed line-clamp-3 flex-1">
+                    <p className="text-xs opacity-80 leading-relaxed line-clamp-2 flex-1">
                       {cert.description}
                     </p>
                   </div>

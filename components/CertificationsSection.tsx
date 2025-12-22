@@ -41,7 +41,7 @@ const CertificationsSection: React.FC<CertificationsSectionProps> = ({
   const securityCerts = certifications?.filter((c) => c.stack === "security") || [];
 
   return (
-    <section className="space-y-32 py-40">
+    <section className="space-y-8 md:space-y-16 py-8 md:py-12">
       <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
           Certifications
@@ -51,7 +51,7 @@ const CertificationsSection: React.FC<CertificationsSectionProps> = ({
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-24 md:gap-40 lg:gap-56 max-w-7xl mx-auto px-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-24 lg:gap-32 max-w-7xl mx-auto px-4">
         <CertStack
           title="Cloud Architecture"
           icon={<CloudIcon />}
