@@ -42,7 +42,7 @@ const Now: React.FC = () => {
         </section>
       </article>
 
-      <p className="text-xs opacity-30 pt-8">Last updated: Oct 2024</p>
+      <p className="text-xs opacity-30 pt-8">Last updated: Nov 2025</p>
     </div>
   );
 };

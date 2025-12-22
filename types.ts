@@ -70,7 +70,14 @@ export interface Certification {
   credentialLink?: string; // optional: link to verify (e.g. Credly, LinkedIn)
   logo?: string; // optional: URL to issuer logo (for nicer visuals)
   description: string;
-  stack: "cloud" | "devops" | "security" | "engineering" | "data" | "programming" | "database"; // New field
+  stack:
+    | "cloud"
+    | "devops"
+    | "security"
+    | "engineering"
+    | "data"
+    | "programming"
+    | "database"; // New field
 }
 
 export interface HomeData {
@@ -78,7 +85,7 @@ export interface HomeData {
   bioTitle: string;
   affiliations: BadgeItem[];
   coreTeam: BadgeItem[];
-  maintaining: BadgeItem[];
+  creatorOf: BadgeItem[];
   createdProjects: BadgeItem[];
   experiences: Experience[];
   certifications: Certification[];

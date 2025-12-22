@@ -21,7 +21,7 @@ export const INITIAL_HOME_DATA: HomeData = {
     { id: "2", label: "Notion Uniuyo", href: "#" },
     // { id: "3", label: "Vite", href: "#" },
   ],
-  maintaining: [
+  creatorOf: [
     // { id: "1", label: "Shiki", href: "#" },
     // { id: "2", label: "Twoslash", href: "#" },
     {
@@ -59,7 +59,8 @@ export const INITIAL_HOME_DATA: HomeData = {
       href: "https://softsuite.com",
       location: "Uyo, Nigeria",
       period: "2021 – 2025",
-      description: "Built modern web applications with Vue.js, Nuxt, Nextjs, Laravel and Django.",
+      description:
+        "Built modern web applications with Vue.js, Nuxt, Nextjs, Laravel and Django.",
     },
     {
       id: "3",
@@ -287,7 +288,7 @@ export const INITIAL_POSTS: Post[] = [
     duration: "25 min",
     categories: ["tech", "css", "tooling"],
     content:
-      "# Reimagining Atomic CSS\n\nAtomic CSS has changed how we think about styling. With **UnoCSS**, we're taking it to the next level.\n\n> Performance is key.\n\nBy generating styles on-demand, we can reduce the size of our CSS bundles significantly. But it's not just about size; it's about the developer experience. Having the full power of CSS at your fingertips without the overhead of maintaining huge stylesheets is a game changer.\n\n```css\n.u-btn {\n  @apply px-4 py-2 bg-blue-500 text-white rounded;\n}\n```",
+      "# Reimagining Atomic CSS\n\nAtomic CSS has changed how we think about styling. With **UnoCSS**, we're taking it to the next level.\n\n> Performance is key.\n\nBy generating styles on-demand, we can reduce the size of our CSS bundles significantly. But it's not just about size; it's about the developer experience. Having the full power of CSS at your fingertips without the overhead of creatorOf huge stylesheets is a game changer.\n\n```css\n.u-btn {\n  @apply px-4 py-2 bg-blue-500 text-white rounded;\n}\n```",
   },
 ];
 

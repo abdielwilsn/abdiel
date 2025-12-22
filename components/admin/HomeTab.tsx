@@ -1,6 +1,6 @@
-import React from 'react';
-import BadgeEditor from './BadgeEditor';
-import { HomeData } from '../../types';
+import React from "react";
+import BadgeEditor from "./BadgeEditor";
+import { HomeData } from "../../types";
 
 interface HomeTabProps {
   homeData: HomeData;
@@ -69,9 +69,9 @@ const HomeTab: React.FC<HomeTabProps> = ({
         onUpdate={(items) => setHomeData({ ...homeData, coreTeam: items })}
       />
       <BadgeEditor
-        title="Maintaining"
-        items={homeData.maintaining}
-        onUpdate={(items) => setHomeData({ ...homeData, maintaining: items })}
+        title="creatorOf"
+        items={homeData.creatorOf}
+        onUpdate={(items) => setHomeData({ ...homeData, creatorOf: items })}
       />
       <BadgeEditor
         title="Home Badge Collection"

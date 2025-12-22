@@ -10,13 +10,13 @@ interface AffiliationItem {
 interface AffiliationsSectionProps {
   affiliations: AffiliationItem[];
   coreTeam: AffiliationItem[];
-  maintaining: AffiliationItem[];
+  creatorOf: AffiliationItem[];
 }
 
 const AffiliationsSection: React.FC<AffiliationsSectionProps> = ({
   affiliations,
   coreTeam,
-  maintaining,
+  creatorOf,
 }) => {
   return (
     <section className="space-y-2 opacity-90">
@@ -30,7 +30,7 @@ const AffiliationsSection: React.FC<AffiliationsSectionProps> = ({
         ))}
       </p>
       <p>
-        Core team member of{" "}
+        Core team member {" "}
         {coreTeam.map((a, idx) => (
           <React.Fragment key={a.id}>
             <Badge href={a.href}>{a.label}</Badge>
@@ -39,11 +39,11 @@ const AffiliationsSection: React.FC<AffiliationsSectionProps> = ({
         ))}
       </p>
       <p>
-        Maintaining{" "}
-        {maintaining.map((a, idx) => (
+        Creator Of{" "}
+        {creatorOf.map((a, idx) => (
           <React.Fragment key={a.id}>
             <Badge href={a.href}>{a.label}</Badge>
-            {idx < maintaining.length - 1 ? " / " : ""}
+            {idx < creatorOf.length - 1 ? " / " : ""}
           </React.Fragment>
         ))}
       </p>

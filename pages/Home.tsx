@@ -19,7 +19,7 @@ const Home: React.FC = () => {
       <AffiliationsSection
         affiliations={homeData.affiliations}
         coreTeam={homeData.coreTeam}
-        maintaining={homeData.maintaining}
+        creatorOf={homeData.creatorOf}
       />
 
       <ProjectsSection projects={homeData.createdProjects} />
