@@ -5,12 +5,58 @@ import { Certification } from '../types';
 
 interface StackProps {
   title: string;
-  icon: string;
-  color: string;
+  icon: React.ReactNode;
+  color: string; // still used for card glow & title gradient
   certifications: Certification[];
   selectedCert: Certification | null;
   onSelectCert: (cert: Certification | null) => void;
 }
+
+// Black & white SVG icons
+const CloudIcon = () => (
+  <svg
+    className="w-12 h-12 md:w-14 md:h-14 text-foreground" // ← uses foreground color (black in light mode, white in dark)
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+  </svg>
+);
+
+const DevOpsIcon = () => (
+  <svg
+    className="w-12 h-12 md:w-14 md:h-14 text-foreground"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M12 2v20M2 12h20" />
+    <circle cx="12" cy="12" r="4" />
+  </svg>
+);
+
+const SecurityIcon = () => (
+  <svg
+    className="w-12 h-12 md:w-14 md:h-14 text-foreground"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M12 2a10 10 0 0 1 10 10v2a10 10 0 0 1-10 10A10 10 0 0 1 2 14v-2A10 10 0 0 1 12 2z" />
+    <path d="M12 16v-4" />
+    <circle cx="12" cy="8" r="1" />
+  </svg>
+);
 
 const CertStack: React.FC<StackProps> = ({
   title,
@@ -35,40 +81,39 @@ const CertStack: React.FC<StackProps> = ({
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
     >
-      {/* Header */}
+      {/* Header - icon and title side by side in black & white */}
       <div className="text-center mb-16 md:mb-24">
-        <motion.div
-          className="text-6xl md:text-7xl mb-4"
-          animate={{ rotate: [0, 6, -6, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          {icon}
-        </motion.div>
-        <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r bg-clip-text text-transparent">
-          {title}
-        </h3>
-        <p className="text-base md:text-lg opacity-70 mt-3">
+        <div className="flex items-center justify-center gap-3 mb-3">
+          <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">
+            {React.cloneElement(icon as React.ReactElement, {
+              className: "w-full h-full text-foreground"
+            })}
+          </div>
+          <h3 className="text-lg md:text-xl font-bold text-foreground">
+            {title}
+          </h3>
+        </div>
+        <p className="text-sm md:text-base opacity-70 mt-2">
           {certifications.length} certifications
         </p>
       </div>
 
-      {/* Stack Container - Much Taller + Centered */}
-      <div className="relative w-80 md:w-[460px] min-h-[600px] flex flex-col items-center justify-start">
+      {/* Stack Container */}
+      <div className="relative w-64 md:w-80 min-h-[400px] flex flex-col items-center justify-start">
         <AnimatePresence>
           {certifications.map((cert, index) => {
             const isTop = topCardId === cert.id;
             const zIndex = isTop ? 100 : certifications.length - index;
-            // Larger vertical stagger for better spacing
-            const verticalOffset = index * 80; // <--- Increased from 50 → 80
-            const horizontalOffset = index * 15;
+            const verticalOffset = index * 50;
+            const horizontalOffset = index * 10;
             const scale = isTop ? 1.12 : 0.88 + index * 0.04;
 
             return (
               <motion.div
                 key={cert.id}
                 className={`
-                  absolute w-full p-7 md:p-8 bg-card/95 backdrop-blur-lg border border-border/40 
-                  rounded-2xl shadow-2xl cursor-pointer overflow-hidden
+                  absolute w-full p-4 md:p-5 bg-card/95 backdrop-blur-lg border border-border/40
+                  rounded-xl shadow-2xl cursor-pointer overflow-hidden
                   ${isTop ? 'scale-115 border-primary/70 shadow-3xl z-50' : 'opacity-90 hover:opacity-100'}
                   hover:shadow-3xl hover:border-primary/50 hover:scale-105 hover:z-40
                   transition-all duration-500
@@ -84,7 +129,7 @@ const CertStack: React.FC<StackProps> = ({
                   scale,
                   opacity: 1,
                   rotateX: isTop ? 0 : 25,
-                  y: isTop ? -80 : verticalOffset,
+                  y: isTop ? -60 : verticalOffset,
                   x: isTop ? 0 : horizontalOffset,
                 }}
                 transition={{
@@ -95,32 +140,30 @@ const CertStack: React.FC<StackProps> = ({
                 }}
                 onClick={() => handleCardClick(cert)}
               >
-                <div className="space-y-6">
-                  {/* Title + Issuer */}
+                <div className="space-y-3">
                   <div>
-                    <h4 className="font-semibold text-xl md:text-2xl leading-tight line-clamp-2">
+                    <h4 className="font-semibold text-base md:text-lg leading-tight line-clamp-2">
                       {cert.name}
                     </h4>
-                    <p className="text-base md:text-lg opacity-90 mt-2">{cert.issuer}</p>
+                    <p className="text-sm md:text-base opacity-90 mt-1">{cert.issuer}</p>
                   </div>
 
-                  {/* Date + Description */}
-                  <div className="flex justify-between items-end gap-6">
-                    <span className="text-sm md:text-base bg-muted/60 px-4 py-2 rounded-full opacity-90 whitespace-nowrap">
+                  <div className="flex justify-between items-end gap-3">
+                    <span className="text-xs md:text-sm bg-muted/60 px-3 py-1.5 rounded-full opacity-90 whitespace-nowrap">
                       {cert.date}
                     </span>
-                    <p className="text-base md:text-lg opacity-80 leading-relaxed line-clamp-4 flex-1">
+                    <p className="text-xs md:text-sm opacity-80 leading-relaxed line-clamp-3 flex-1">
                       {cert.description}
                     </p>
                   </div>
                 </div>
 
-                {/* Glow */}
+                {/* Subtle glow using the gradient color */}
                 <motion.div
                   className="absolute inset-0 rounded-2xl pointer-events-none"
                   style={{ background: `linear-gradient(to right, ${color})` }}
                   initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 0.3 }}
+                  whileHover={{ opacity: 0.12 }} // reduced opacity for subtle effect
                 />
               </motion.div>
             );
