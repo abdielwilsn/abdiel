@@ -34,6 +34,7 @@ import {
 import { supabase } from "./services/supabase";
 import { DataService } from "./services/dataService";
 import { INITIAL_HOME_DATA } from "./data";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 interface DataContextType {
   homeData: HomeData;
