@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
 const AdSlot: React.FC = () => {
   useEffect(() => {
@@ -6,7 +6,7 @@ const AdSlot: React.FC = () => {
       // @ts-ignore
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch (e) {
-      console.error('AdSense push failed', e);
+      console.error("AdSense push failed", e);
     }
   }, []);
 
@@ -18,13 +18,13 @@ const AdSlot: React.FC = () => {
             Sponsored Advertisement
           </span>
 
-        <ins
-            className="adsbygoogle"
-            style={{ display: 'block' }}
+          <ins
+            class="adsbygoogle"
+            style="display:block"
             data-ad-format="fluid"
             data-ad-layout-key="-fb+5w+4e-db+86"
-            data-ad-client="ca-pub-8191819840815253"
-            data-ad-slot="2256377029"
+            data-ad-client="ca-pub-4700530184261512"
+            data-ad-slot="1557802205"
           ></ins>
         </div>
       </div>
