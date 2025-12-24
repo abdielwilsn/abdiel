@@ -34,7 +34,7 @@ import {
 import { supabase } from "./services/supabase";
 import { DataService } from "./services/dataService";
 import { INITIAL_HOME_DATA } from "./data";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 interface DataContextType {
   homeData: HomeData;
@@ -247,6 +247,7 @@ const App: React.FC = () => {
             </main>
             <Footer />
           </div>
+          <SpeedInsights />
         </div>
       </Router>
     </DataContext.Provider>
