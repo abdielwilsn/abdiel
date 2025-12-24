@@ -1,10 +1,11 @@
-
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const TreeBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const location = useLocation();
+  const animationFrameId = useRef<number>();
+  const [hasInteracted, setHasInteracted] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -13,10 +14,10 @@ const TreeBackground: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let animationFrameId: number;
-    const startTime = Date.now();
-    const duration = 15000; // 15 seconds for a very slow, gradual growth
-    
+    // Make canvas non-critical for LCP
+    canvas.setAttribute('aria-hidden', 'true');
+    canvas.setAttribute('role', 'presentation');
+
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -24,130 +25,231 @@ const TreeBackground: React.FC = () => {
     window.addEventListener('resize', resize);
     resize();
 
+    // Track user interaction to start animation early
+    const startOnInteraction = () => {
+      setHasInteracted(true);
+      window.removeEventListener('scroll', startOnInteraction);
+      window.removeEventListener('click', startOnInteraction);
+      window.removeEventListener('keydown', startOnInteraction);
+    };
+    window.addEventListener('scroll', startOnInteraction, { once: true });
+    window.addEventListener('click', startOnInteraction, { once: true });
+    window.addEventListener('keydown', startOnInteraction, { once: true });
+
+    // Reduce complexity a bit (still looks great)
+    const maxDepth = 9; // Was 11 → fewer branches, faster render
+
     interface Branch {
-      x: number;
-      y: number;
+      startX: number;
+      startY: number;
+      endX: number;
+      endY: number;
+      width: number;
       angle: number;
       length: number;
       depth: number;
-      maxWidth: number;
-      // Pre-calculated randomness for consistent frames
-      angleOffset1: number;
-      angleOffset2: number;
-      lengthReduction: number;
+      // For wind animation
+      swayPhase: number;
+      swayAmplitude: number;
+      children: Branch[];
     }
 
-    // High depth for a very complex tree
-    const maxDepth = 11;
-    
-    // Seed the tree structure so it doesn't change every frame, only grows
-    const generateTreeStructure = (
-      x: number, 
-      y: number, 
-      angle: number, 
-      length: number, 
-      depth: number, 
-      maxWidth: number
-    ): any => {
-      if (depth >= maxDepth) return null;
+    let tree: Branch | null = null;
+    let growthComplete = false;
 
-      const angleOffset1 = -0.2 - Math.random() * 0.4;
-      const angleOffset2 = 0.2 + Math.random() * 0.4;
-      const lengthReduction = 0.75 + Math.random() * 0.15;
+    const generateTree = (): Branch => {
+      const build = (
+        x: number,
+        y: number,
+        angle: number,
+        length: number,
+        depth: number,
+        width: number
+      ): Branch => {
+        const endX = x + Math.cos(angle) * length;
+        const endY = y + Math.sin(angle) * length;
 
-      return {
-        x, y, angle, length, depth, maxWidth,
-        angleOffset1, angleOffset2, lengthReduction,
-        left: generateTreeStructure(
-          0, 0, // values calculated during draw
-          angle + angleOffset1,
-          length * lengthReduction,
-          depth + 1,
-          maxWidth * 0.7
-        ),
-        right: generateTreeStructure(
-          0, 0, // values calculated during draw
-          angle + angleOffset2,
-          length * lengthReduction,
-          depth + 1,
-          maxWidth * 0.7
-        )
+        const children: Branch[] = [];
+        if (depth < maxDepth) {
+          const angleOffset1 = -0.2 - Math.random() * 0.4;
+          const angleOffset2 = 0.2 + Math.random() * 0.4;
+          const reduction = 0.75 + Math.random() * 0.15;
+
+          children.push(
+            build(endX, endY, angle + angleOffset1, length * reduction, depth + 1, width * 0.7),
+            build(endX, endY, angle + angleOffset2, length * reduction, depth + 1, width * 0.7)
+          );
+        }
+
+        return {
+          startX: x,
+          startY: y,
+          endX,
+          endY,
+          width,
+          angle,
+          length,
+          depth,
+          swayPhase: Math.random() * Math.PI * 2,
+          swayAmplitude: depth > maxDepth - 4 ? 2 + Math.random() * 3 : 0, // Only tips sway
+          children,
+        };
       };
+
+      return build(
+        window.innerWidth / 2,
+        window.innerHeight,
+        -Math.PI / 2,
+        130 + Math.random() * 20,
+        0,
+        3
+      );
     };
 
-    const treeRoot = generateTreeStructure(
-      window.innerWidth / 2,
-      window.innerHeight,
-      -Math.PI / 2,
-      120 + Math.random() * 30,
-      0,
-      3
-    );
-
-    const drawLine = (x1: number, y1: number, x2: number, y2: number, width: number) => {
+    // Immediate: Paint a very subtle static background so LCP isn't waiting
+    const paintInitial = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const isDark = document.documentElement.classList.contains('dark');
+      ctx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.03)' : 'rgba(0, 0, 0, 0.03)';
+      ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.moveTo(x1, y1);
-      ctx.lineTo(x2, y2);
-      ctx.lineWidth = width;
+      ctx.moveTo(window.innerWidth / 2, window.innerHeight);
+      ctx.lineTo(window.innerWidth / 2, window.innerHeight * 0.7);
       ctx.stroke();
     };
+    paintInitial();
 
-    const animate = () => {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / duration, 1);
+    // Full growth animation (runs once)
+    const growTree = () => {
+      if (!tree) tree = generateTree();
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      const isDark = document.documentElement.classList.contains('dark');
-      ctx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)';
+      const startTime = Date.now();
+      const duration = 12000; // 12s growth
 
-      const renderNode = (node: any, parentX: number, parentY: number) => {
-        if (!node) return;
+      const drawBranchPartial = (branch: Branch, progress: number) => {
+        const levelProgress = Math.min(
+          (progress - branch.depth / maxDepth) / (1 / maxDepth),
+          1
+        );
+        if (levelProgress <= 0) return false;
 
-        // Spread growth across depths
-        const levelStart = node.depth / maxDepth;
-        const levelEnd = (node.depth + 1) / maxDepth;
-        let localProgress = 0;
-        
-        if (progress > levelStart) {
-          localProgress = Math.min((progress - levelStart) / (levelEnd - levelStart), 1);
-        }
+        const currentLength = branch.length * levelProgress;
+        const currentEndX = branch.startX + Math.cos(branch.angle) * currentLength;
+        const currentEndY = branch.startY + Math.sin(branch.angle) * currentLength;
 
-        if (localProgress <= 0) return;
+        ctx.beginPath();
+        ctx.moveTo(branch.startX, branch.startY);
+        ctx.lineTo(currentEndX, currentEndY);
+        ctx.lineWidth = branch.width;
+        ctx.stroke();
 
-        const currentLength = node.length * localProgress;
-        const endX = parentX + Math.cos(node.angle) * currentLength;
-        const endY = parentY + Math.sin(node.angle) * currentLength;
-        
-        drawLine(parentX, parentY, endX, endY, node.maxWidth);
+        return levelProgress >= 1;
+      };
 
-        if (localProgress === 1) {
-          renderNode(node.left, endX, endY);
-          renderNode(node.right, endX, endY);
+      const animateGrowth = () => {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = document.documentElement.classList.contains('dark')
+          ? 'rgba(255, 255, 255, 0.06)'
+          : 'rgba(0, 0, 0, 0.06)';
+
+        let complete = true;
+        const traverse = (branch: Branch) => {
+          const fullyGrown = drawBranchPartial(branch, progress);
+          if (!fullyGrown) complete = false;
+          if (fullyGrown) {
+            branch.children.forEach(traverse);
+          }
+        };
+        traverse(tree!);
+
+        if (!complete && progress < 1) {
+          animationFrameId.current = requestAnimationFrame(animateGrowth);
+        } else {
+          growthComplete = true;
         }
       };
 
-      if (treeRoot) {
-        renderNode(treeRoot, window.innerWidth / 2, window.innerHeight);
-      }
-
-      if (progress < 1) {
-        animationFrameId = requestAnimationFrame(animate);
-      }
+      animateGrowth();
     };
 
-    animate();
+    // Subtle wind animation (only tips move, very cheap)
+    const windAnimation = () => {
+      if (!growthComplete || !tree) return;
+
+      let time = 0;
+      const animateWind = () => {
+        time += 0.015;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = document.documentElement.classList.contains('dark')
+          ? 'rgba(255, 255, 255, 0.06)'
+          : 'rgba(0, 0, 0, 0.06)';
+
+        const drawWithSway = (branch: Branch) => {
+          let dx = 0,
+            dy = 0;
+          if (branch.swayAmplitude > 0) {
+            const sway = Math.sin(time + branch.swayPhase) * branch.swayAmplitude;
+            dx = Math.cos(branch.angle + Math.PI / 2) * sway;
+            dy = Math.sin(branch.angle + Math.PI / 2) * sway;
+          }
+
+          ctx.beginPath();
+          ctx.moveTo(branch.startX, branch.startY);
+          ctx.lineTo(branch.endX + dx, branch.endY + dy);
+          ctx.lineWidth = branch.width;
+          ctx.stroke();
+
+          branch.children.forEach(drawWithSway);
+        };
+
+        drawWithSway(tree!);
+
+        animationFrameId.current = requestAnimationFrame(animateWind);
+      };
+
+      animateWind();
+    };
+
+    // Start animation: either after delay or on first interaction
+    const startAnimation = () => {
+      growTree();
+      // When growth finishes, switch to lightweight wind
+      const checkGrowth = setInterval(() => {
+        if (growthComplete) {
+          clearInterval(checkGrowth);
+          windAnimation();
+        }
+      }, 500);
+    };
+
+    const timer = setTimeout(() => {
+      if (!hasInteracted) startAnimation();
+    }, 4000); // 4-second delay
+
+    if (hasInteracted) {
+      clearTimeout(timer);
+      startAnimation();
+    }
 
     return () => {
       window.removeEventListener('resize', resize);
-      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('scroll', startOnInteraction);
+      window.removeEventListener('click', startOnInteraction);
+      window.removeEventListener('keydown', startOnInteraction);
+      clearTimeout(timer);
+      if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
     };
-  }, [location.pathname]);
+  }, [location.pathname, hasInteracted]);
 
   return (
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
+      style={{ background: 'transparent' }} // Ensure no flash
     />
   );
 };

@@ -28,7 +28,7 @@ const Home: React.FC = () => {
 
       <ExperienceSection experiences={homeData.experiences} />
 
-      <CertificationsSection certifications={homeData.certifications || []} />
+      {/* <CertificationsSection certifications={homeData.certifications || []} /> */}
 
       <SocialLinksSection />
 
