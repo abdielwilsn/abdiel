@@ -20,9 +20,22 @@ const getEnv = (key: string, fallback: string) => {
   return fallback;
 };
 
-const supabaseUrl = getEnv('VITE_SUPABASE_URL', 'o');
-const supabaseAnonKey = getEnv('VITE_SUPABASE_ANON_KEY', 'sb');
+const supabaseUrl = getEnv('VITE_SUPABASE_URL', '');
+const supabaseAnonKey = getEnv('VITE_SUPABASE_ANON_KEY', '');
 
-console.log('[Supabase] Initializing with URL:', supabaseUrl);
+// Validate environment variables
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Missing required Supabase environment variables. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY');
+}
+
+// Only log in development
+try {
+  const viteEnv = (import.meta as any).env;
+  if (viteEnv?.DEV) {
+    console.log('[Supabase] Initializing with URL:', supabaseUrl);
+  }
+} catch (e) {
+  // Silent in production
+}
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);

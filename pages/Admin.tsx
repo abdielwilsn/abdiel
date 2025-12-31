@@ -23,6 +23,9 @@ import MediaTab from "../components/admin/MediaTab";
 import PhotosTab from "../components/admin/PhotosTab";
 import UseTab from "../components/admin/UseTab";
 
+// Constants
+const SITE_CONFIG_ID = "00000000-0000-0000-0000-000000000000";
+
 // Helper to generate valid UUIDs for Supabase compatibility
 const generateUUID = () => {
   if (typeof crypto !== "undefined" && crypto.randomUUID) {
@@ -100,7 +103,7 @@ const Admin: React.FC = () => {
       await supabase.from("site_config").delete().neq("id", "0");
 
       await saveData("site_config", {
-        id: "00000000-0000-0000-0000-000000000000",
+        id: SITE_CONFIG_ID,
         name: INITIAL_HOME_DATA.name,
         bio_title: INITIAL_HOME_DATA.bioTitle,
         affiliations: INITIAL_HOME_DATA.affiliations,
@@ -149,7 +152,7 @@ const Admin: React.FC = () => {
     setIsSaving(true);
     try {
       await saveData("site_config", {
-        id: "00000000-0000-0000-0000-000000000000",
+        id: SITE_CONFIG_ID,
         name: homeData.name,
         bio_title: homeData.bioTitle,
         affiliations: homeData.affiliations,
