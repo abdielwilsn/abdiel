@@ -44,198 +44,131 @@ export const INITIAL_HOME_DATA: HomeData = {
   experiences: [
     {
       id: "1",
-      role: "Software Engineer",
-      company: "RkyConsults",
-      href: "https://rkyconsults.com",
-      location: "Remote / Nigeria",
-      period: "2023 – Present",
+      role: "Backend Developer",
+      company: "HiTechSecurity",
+      href: "#",
+      location: "Uyo, Nigeria (Contract)",
+      period: "May 2025 – June 2025",
       description:
-        "Full-stack development, open-source tooling, and mentoring.",
+        "Engineered a security alert system using Laravel and built a Node.js WebSocket server for real-time communication between mobile apps and IoT security devices.",
     },
     {
       id: "2",
-      role: "Software Engineer & Academy Lead",
-      company: "Softsuite Solutions",
-      href: "https://softsuite.com",
-      location: "Uyo, Nigeria",
-      period: "2021 – 2025",
+      role: "Junior Full-Stack Developer",
+      company: "Medinfocard (iCardServices)",
+      href: "https://medinfocard.org/",
+      location: "Uyo, Nigeria (Part-time)",
+      period: "February 2025 – May 2025",
       description:
-        "Built modern web applications with Vue.js, Nuxt, Nextjs, Laravel and Django.",
+        "Developed a patient information management system using Vue.js and Laravel. Introduced unit and feature tests to legacy codebase and refactored components to align with SOLID principles.",
     },
     {
       id: "3",
+      role: "Full-stack Developer",
+      company: "Nosufer",
+      href: "https://nosufer.com/",
+      location: "Uyo, Nigeria (Freelance)",
+      period: "September 2024 – August 2025",
+      description:
+        "Developed backend architecture for four applications using Laravel and built frontend interfaces for two applications using Vue.js. Managed VPS deployment and server configuration.",
+    },
+    {
+      id: "4",
       role: "Web Developer",
-      company: "Freelance",
-      period: "2019 – 2021",
+      company: "AnHourWithAManager",
+      href: "https://www.anhourwithamanager.com/",
+      location: "Lagos, Nigeria (Contract)",
+      period: "October 2024 – December 2024",
+      description:
+        "Built and integrated new features into a podcast website using PHP, HTML, and Bootstrap. Designed and deployed a no-code landing page for user registration.",
+    },
+    {
+      id: "5",
+      role: "Backend Intern",
+      company: "HNG Internship",
+      href: "#",
+      location: "Remote",
+      period: "July 2024 – August 2024",
+      description:
+        "Collaborated in Agile teams to deliver two MVPs. Designed and implemented backend features and RESTful APIs using Laravel with PostgreSQL. Gained experience in system design, CI/CD pipelines, and unit testing.",
+    },
+    {
+      id: "6",
+      role: "Academy Lead",
+      company: "Softsuite.ng",
+      href: "https://softsuite.ng/",
+      location: "Uyo, Nigeria",
+      period: "January 2025 – Present",
+      description:
+        "Oversee day-to-day operations of the tech academy. Manage and coordinate a team of tutors. Collaborate with marketing teams to develop promotional strategies and increase enrollment.",
+    },
+    {
+      id: "7",
+      role: "Web Developer",
+      company: "Softsuite.ng",
+      href: "https://softsuite.ng/",
+      location: "Uyo, Nigeria (Zero-Hours)",
+      period: "July 2022 – Present",
+      description:
+        "Contributed to client-facing web applications. Trained 26+ students in HTML, CSS, and JavaScript. Mentored 6 interns in Vue.js and Laravel development through real projects and code reviews.",
+    },
+    {
+      id: "8",
+      role: "Freelance Developer",
+      company: "Self-Employed",
+      location: "Remote",
+      period: "2016 – Present",
+      description:
+        "Worked on various freelance web development projects, building websites and web applications for clients across different industries.",
+    },
+    {
+      id: "9",
+      role: "Learning & Development",
+      company: "Self-Study",
+      location: "Nigeria",
+      period: "2012 – Present",
+      description:
+        "Self-taught programming journey, learning web development fundamentals including HTML, CSS, JavaScript, and exploring various programming languages and frameworks.",
     },
   ],
 
   certifications: [
-    // Cloud
+    // Engineering
     {
       id: "1",
-      name: "AWS Certified Developer – Associate",
-      issuer: "Amazon Web Services",
-      date: "Issued Sep 2023",
-      description:
-        "Built and deployed serverless applications using AWS best practices.",
-      credentialLink: "https://www.credly.com/badges/aws-dev",
-      stack: "cloud",
+      name: "Responsive Web Design",
+      issuer: "FreeCodeCamp",
+      date: "Issued 2022",
+      description: "Designed and built responsive web projects.",
+      credentialLink: "#",
+      stack: "engineering",
     },
     {
       id: "2",
-      name: "Google Professional Cloud Architect",
-      issuer: "Google Cloud",
-      date: "Issued Mar 2024",
-      description:
-        "Architected dynamic, secure solutions on Google Cloud Platform.",
-      credentialLink: "https://www.credly.com/badges/gcp-architect",
-      stack: "cloud",
+      name: "Introduction to Computer Science",
+      issuer: "HarvardX",
+      date: "Issued 2022",
+      description: "Foundational computer science principles and programming.",
+      credentialLink: "#",
+      stack: "engineering",
     },
     {
       id: "3",
-      name: "Microsoft Certified: Azure Fundamentals",
-      issuer: "Microsoft",
-      date: "Issued Oct 2022",
-      description:
-        "Cloud fundamentals and Azure services architecture knowledge.",
-      stack: "cloud",
+      name: "HNG Finalist Certificate",
+      issuer: "HNG Internship",
+      date: "Issued 2024",
+      description: "Completed intensive software engineering internship program.",
+      credentialLink: "#",
+      stack: "engineering",
     },
-
-    // DevOps
     {
       id: "4",
-      name: "Certified Kubernetes Administrator (CKA)",
-      issuer: "Cloud Native Computing Foundation",
-      date: "Issued Nov 2023",
-      description:
-        "Deployed, managed, and troubleshot production Kubernetes clusters.",
-      credentialLink: "https://www.credly.com/badges/cka",
-      stack: "devops",
-    },
-    {
-      id: "5",
-      name: "Terraform Associate",
-      issuer: "HashiCorp",
-      date: "Issued Apr 2024",
-      description:
-        "Infrastructure as Code expert using Terraform across multi-cloud.",
-      credentialLink: "https://www.credly.com/badges/terraform",
-      stack: "devops",
-    },
-    {
-      id: "6",
-      name: "Docker Certified Associate",
-      issuer: "Docker",
-      date: "Issued Jan 2023",
-      description:
-        "Containerization expert across Docker ecosystem and orchestration.",
-      stack: "devops",
-    },
-
-    // Security
-    {
-      id: "7",
-      name: "CompTIA Security+",
-      issuer: "CompTIA",
-      date: "Issued Dec 2021",
-      description:
-        "Foundational cybersecurity knowledge and risk management best practices.",
-      credentialLink: "https://www.credly.com/badges/security-plus",
-      stack: "security",
-    },
-    {
-      id: "8",
-      name: "Certified Ethical Hacker (CEH)",
-      issuer: "EC-Council",
-      date: "Issued May 2023",
-      description:
-        "Penetration testing and vulnerability assessment expertise.",
-      stack: "security",
-    },
-
-    // Engineering
-    {
-      id: "9",
-      name: "Legacy Responsive Web Design",
-      issuer: "FreeCodeCamp",
-      date: "Issued Sep 2022",
-      description: "Designed and built web projects.",
-      credentialLink:
-        "https://www.freecodecamp.org/certification/wilsonabdiel/responsive-web-design",
+      name: "HNG Certificate of Proficiency in Backend Development",
+      issuer: "HNG Internship",
+      date: "Issued 2024",
+      description: "Demonstrated proficiency in backend development with Laravel and PostgreSQL.",
+      credentialLink: "#",
       stack: "engineering",
-    },
-    {
-      id: "10",
-      name: "JavaScript Algorithms and Data Structures",
-      issuer: "FreeCodeCamp",
-      date: "Issued Jan 2023",
-      description: "Mastered algorithms and data structures in JavaScript.",
-      stack: "engineering",
-    },
-
-    // Data & AI
-    {
-      id: "11",
-      name: "Google Professional Data Engineer",
-      issuer: "Google Cloud",
-      date: "Issued Jul 2024",
-      description:
-        "Big data pipelines and ML model deployment on Google Cloud.",
-      credentialLink: "https://www.credly.com/badges/gcp-data",
-      stack: "data",
-    },
-    {
-      id: "12",
-      name: "AWS Certified Machine Learning – Specialty",
-      issuer: "Amazon Web Services",
-      date: "Issued Aug 2024",
-      description: "Machine learning models design and deployment on AWS.",
-      stack: "data",
-    },
-    {
-      id: "13",
-      name: "TensorFlow Developer Certificate",
-      issuer: "Google",
-      date: "Issued Jun 2024",
-      description: "Deep learning and neural networks with TensorFlow.",
-      stack: "data",
-    },
-
-    // Programming
-    {
-      id: "14",
-      name: "Oracle Certified Professional: Java SE",
-      issuer: "Oracle",
-      date: "Issued Mar 2023",
-      description: "Advanced Java programming and object-oriented principles.",
-      stack: "programming",
-    },
-    {
-      id: "15",
-      name: "Python Institute PCEP",
-      issuer: "Python Institute",
-      date: "Issued Nov 2022",
-      description: "Python programming fundamentals and best practices.",
-      stack: "programming",
-    },
-
-    // Database
-    {
-      id: "16",
-      name: "MongoDB Certified Developer",
-      issuer: "MongoDB Inc.",
-      date: "Issued Apr 2023",
-      description: "NoSQL database design and query optimization.",
-      stack: "database",
-    },
-    {
-      id: "17",
-      name: "PostgreSQL 14 Associate Certification",
-      issuer: "PostgreSQL",
-      date: "Issued Feb 2024",
-      description: "Relational database management and SQL optimization.",
-      stack: "database",
     },
   ],
 };
