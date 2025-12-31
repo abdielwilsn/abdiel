@@ -255,3 +255,17 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+
+
+// <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4700530184261512"
+//      crossorigin="anonymous"></script>
+// <ins class="adsbygoogle"
+//      style="display:block"
+//      data-ad-format="fluid"
+//      data-ad-layout-key="-fb+5w+4e-db+86"
+//      data-ad-client="ca-pub-4700530184261512"
+//      data-ad-slot="1557802205"></ins>
+// <script>
+//      (adsbygoogle = window.adsbygoogle || []).push({});
+// </script>

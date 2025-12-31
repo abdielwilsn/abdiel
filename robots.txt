@@ -1,0 +1,54 @@
+# robots.txt for abdielwilsn portfolio
+
+# Allow all crawlers by default
+User-agent: *
+Allow: /
+
+# Sitemap location (update with your actual domain)
+# Sitemap: https://abdielwilsn.me/sitemap.xml
+
+# AI Crawlers - Common AI bots for training and indexing
+# OpenAI GPT
+User-agent: GPTBot
+Allow: /
+
+# Google Bard/Gemini
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic Claude
+User-agent: anthropic-ai
+Allow: /
+
+# Common Crawl (used by many AI companies)
+User-agent: CCBot
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# Amazon (Alexa, AI services)
+User-agent: Amazonbot
+Allow: /
+
+# Facebook/Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Apple AI
+User-agent: Applebot-Extended
+Allow: /
+
+# Disallow certain paths (uncomment and customize as needed)
+# Disallow: /admin/
+# Disallow: /private/
+# Disallow: /_next/
+# Disallow: /api/
+
+# Crawl delay (optional - helps prevent server overload)
+# Crawl-delay: 1
