@@ -19,8 +19,8 @@ const AdSlot: React.FC = () => {
           </span>
 
           <ins
-            class="adsbygoogle"
-            style="display:block"
+            className="adsbygoogle"
+            style={{ display: 'block' }}
             data-ad-format="fluid"
             data-ad-layout-key="-fb+5w+4e-db+86"
             data-ad-client="ca-pub-4700530184261512"

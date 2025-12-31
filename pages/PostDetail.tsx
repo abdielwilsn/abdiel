@@ -4,12 +4,14 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useData } from '../App';
 import { marked } from 'marked';
 import AdSlot from '../components/AdSlot';
+import { getPostSlug } from '../utils/slugify';
 
 const PostDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const { posts } = useData();
-  const post = posts.find(p => p.id === id);
+  // Find post by slug or id (for backwards compatibility)
+  const post = posts.find(p => getPostSlug(p) === slug || p.id === slug);
   const [htmlContent, setHtmlContent] = useState<string>('');
 
   useEffect(() => {

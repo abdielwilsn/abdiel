@@ -9,6 +9,7 @@ export interface Project {
 
 export interface Post {
   id: string;
+  slug?: string; // URL-friendly slug derived from title
   title: string;
   date: string;
   duration: string;

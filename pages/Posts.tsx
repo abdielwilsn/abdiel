@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useData } from "../App";
+import { getPostSlug } from "../utils/slugify";
 
 const Posts: React.FC = () => {
   const { posts } = useData();
@@ -52,7 +53,7 @@ const Posts: React.FC = () => {
                   <li key={post.id} className="group">
                     <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-1 md:gap-4">
                       <Link
-                        to={`/posts/${post.id}`}
+                        to={`/posts/${getPostSlug(post)}`}
                         className="text-lg opacity-80 group-hover:opacity-100 transition-opacity"
                       >
                         {post.title}

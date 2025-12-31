@@ -207,6 +207,7 @@ export const INITIAL_PROJECTS: Project[] = [
 export const INITIAL_POSTS: Post[] = [
   {
     id: "why-i-moved-to-tokyo",
+    slug: "why-i-moved-to-tokyo",
     title: "Why I moved to Tokyo",
     date: "Oct 12, 2024",
     duration: "12 min",
@@ -216,6 +217,7 @@ export const INITIAL_POSTS: Post[] = [
   },
   {
     id: "reimagining-atomic-css",
+    slug: "reimagining-atomic-css",
     title: "Reimagining Atomic CSS",
     date: "Aug 24, 2024",
     duration: "25 min",

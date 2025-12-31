@@ -222,7 +222,7 @@ const App: React.FC = () => {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/posts" element={<Posts />} />
-                  <Route path="/posts/:id" element={<PostDetail />} />
+                  <Route path="/posts/:slug" element={<PostDetail />} />
                   <Route path="/now" element={<Now />} />
                   <Route path="/categories" element={<Categories />} />
                   <Route
