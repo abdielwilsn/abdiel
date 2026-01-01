@@ -33,6 +33,7 @@ const PostsTab: React.FC<PostsTabProps> = ({
     const newId = generateUUID();
     const newPost = {
       id: newId,
+      slug: 'untitled-post',
       title: 'Untitled Post',
       date: new Date().toDateString(),
       duration: '5 min',

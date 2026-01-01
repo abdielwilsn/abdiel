@@ -173,36 +173,7 @@ export const INITIAL_HOME_DATA: HomeData = {
   ],
 };
 
-export const INITIAL_PROJECTS: Project[] = [
-  {
-    id: "1",
-    name: "Vitest",
-    description: "A blazing fast unit test framework powered by Vite.",
-    link: "https://vitest.dev",
-    github: "vitest-dev/vitest",
-  },
-  {
-    id: "2",
-    name: "Slidev",
-    description: "Presentation slides for developers.",
-    link: "https://sli.dev",
-    github: "slidevjs/slidev",
-  },
-  {
-    id: "3",
-    name: "VueUse",
-    description: "Collection of essential Vue Composition Utilities.",
-    link: "https://vueuse.org",
-    github: "vueuse/vueuse",
-  },
-  {
-    id: "4",
-    name: "UnoCSS",
-    description: "Instant on-demand atomic CSS engine.",
-    link: "https://unocss.dev",
-    github: "unocss/unocss",
-  },
-];
+
 
 export const INITIAL_POSTS: Post[] = [
   {

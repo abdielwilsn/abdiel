@@ -121,17 +121,30 @@ const PostEditor: React.FC<PostEditorProps> = ({
               Categories (comma separated)
             </label>
             <input
+              type="text"
               className="w-full bg-gray-50 dark:bg-gray-900 px-3 py-2 rounded-lg text-sm text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-800 placeholder:text-gray-400 dark:placeholder:text-gray-600"
               value={post.categories?.join(', ') || ''}
-              onChange={(e) =>
-                onUpdate(post.id, {
-                  categories: e.target.value
-                    .split(',')
-                    .map((s) => s.trim())
-                    .filter(Boolean),
-                })
-              }
+              onChange={(e) => {
+                const inputValue = e.target.value;
+                // Split by comma and clean up
+                const categoriesArray = inputValue
+                  .split(',')
+                  .map((cat) => cat.trim())
+                  .filter((cat) => cat.length > 0);
+
+                onUpdate(post.id, { categories: categoriesArray });
+              }}
+              onKeyDown={(e) => {
+                // Allow comma key
+                if (e.key === ',') {
+                  e.stopPropagation();
+                }
+              }}
+              placeholder="tech, css, tooling"
             />
+            <p className="text-xs text-gray-400 dark:text-gray-500">
+              Separate with commas: "tech, css, react"
+            </p>
           </div>
         </div>
 
