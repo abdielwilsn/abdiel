@@ -28,7 +28,7 @@ const Now: React.FC = () => {
           <h2 className="text-xl font-semibold mb-3 border-b border-gray-100 dark:border-gray-800 pb-2">Learning & Reading</h2>
           <ul className="list-disc pl-5 space-y-2">
             <li>Practicing German.</li>
-            <li>Reading <em>"The Da Vinci Code Work"</em> by Dan Brown.</li>
+            <li>Reading <em>"The Da Vinci Code"</em> by Dan Brown.</li>
             <li>Exploring cybersecurity and building rock solid applications.</li>
           </ul>
         </section>
