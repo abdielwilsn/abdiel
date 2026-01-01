@@ -140,7 +140,7 @@ export const INITIAL_HOME_DATA: HomeData = {
       issuer: "FreeCodeCamp",
       date: "Issued 2022",
       description: "Designed and built responsive web projects.",
-      credentialLink: "#",
+      credentialLink: "https://www.freecodecamp.org/certification/wilsonabdiel/responsive-web-design",
       stack: "engineering",
     },
     {
@@ -149,7 +149,7 @@ export const INITIAL_HOME_DATA: HomeData = {
       issuer: "HarvardX",
       date: "Issued 2022",
       description: "Foundational computer science principles and programming.",
-      credentialLink: "#",
+      credentialLink: "https://certificates.cs50.io/6f25f207-48b3-4a06-844c-91eb20e30053.pdf?size=letter",
       stack: "engineering",
     },
     {
@@ -158,7 +158,7 @@ export const INITIAL_HOME_DATA: HomeData = {
       issuer: "HNG Internship",
       date: "Issued 2024",
       description: "Completed intensive software engineering internship program.",
-      credentialLink: "#",
+      credentialLink: "https://certgo.app/c-230b1235",
       stack: "engineering",
     },
     {
@@ -167,7 +167,7 @@ export const INITIAL_HOME_DATA: HomeData = {
       issuer: "HNG Internship",
       date: "Issued 2024",
       description: "Demonstrated proficiency in backend development with Laravel and PostgreSQL.",
-      credentialLink: "#",
+      credentialLink: "https://certgo.app/c-1c98a45e",
       stack: "engineering",
     },
   ],
