@@ -173,7 +173,9 @@ export const INITIAL_HOME_DATA: HomeData = {
   ],
 };
 
-
+export const INITIAL_PROJECTS: Project[] = [
+  
+];
 
 export const INITIAL_POSTS: Post[] = [
   {
