@@ -203,11 +203,11 @@ export const INITIAL_POSTS: Post[] = [
 export const INITIAL_TALKS: Talk[] = [
   {
     id: "1",
-    title: "The Future of Web Tooling",
-    event: "ViteConf 2024",
-    date: "Oct 2024",
+    title: "Data Made Simple: Notion Database for Non-Techies",
+    event: "Notion Uniuyo workshops 2024",
+    date: "April 8th, 2025",
     link: "#",
-    location: "Online",
+    location: "Google Meet",
   },
 ];
 

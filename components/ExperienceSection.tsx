@@ -22,7 +22,7 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({ experiences }) =>
         {experiences.map((exp) => (
           <div
             key={exp.id}
-            className="min-w-[300px] md:min-w-[380px] max-w-[380px] flex-shrink-0 snap-center p-6 bg-card/50 backdrop-blur-sm border border-border rounded-xl transition-all hover:scale-[1.03] hover:shadow-lg hover:border-primary/50 duration-300"
+            className="w-[300px] md:w-[440px] flex-shrink-0 snap-center p-6 bg-card/50 backdrop-blur-sm border border-border rounded-xl transition-all hover:scale-[1.03] hover:shadow-lg hover:border-primary/50 duration-300"
           >
             <div className="flex flex-col h-full">
               <div className="flex justify-between items-start gap-4 mb-4">
