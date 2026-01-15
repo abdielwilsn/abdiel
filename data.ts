@@ -43,7 +43,17 @@ export const INITIAL_HOME_DATA: HomeData = {
   ],
   experiences: [
     {
-      id: "1",
+      id: "9",
+      role: "LMS Administrator & Web Developer",
+      company: "RkyConsults",
+      href: "https://rkyconsults.com",
+      location: "Nigeria",
+      period: "January 2025 – Present",
+      description:
+        "Managing learning management system administration and developing web solutions for the company.",
+    },
+    {
+      id: "8",
       role: "Backend Developer",
       company: "HiTechSecurity",
       href: "#",
@@ -53,7 +63,7 @@ export const INITIAL_HOME_DATA: HomeData = {
         "Engineered a security alert system using Laravel and built a Node.js WebSocket server for real-time communication between mobile apps and IoT security devices.",
     },
     {
-      id: "2",
+      id: "7",
       role: "Junior Full-Stack Developer",
       company: "Medinfocard (iCardServices)",
       href: "https://medinfocard.org/",
@@ -63,7 +73,7 @@ export const INITIAL_HOME_DATA: HomeData = {
         "Developed a patient information management system using Vue.js and Laravel. Introduced unit and feature tests to legacy codebase and refactored components to align with SOLID principles.",
     },
     {
-      id: "3",
+      id: "6",
       role: "Full-stack Developer",
       company: "Nosufer",
       href: "https://nosufer.com/",
@@ -73,7 +83,7 @@ export const INITIAL_HOME_DATA: HomeData = {
         "Developed backend architecture for four applications using Laravel and built frontend interfaces for two applications using Vue.js. Managed VPS deployment and server configuration.",
     },
     {
-      id: "4",
+      id: "5",
       role: "Web Developer",
       company: "AnHourWithAManager",
       href: "https://www.anhourwithamanager.com/",
@@ -83,7 +93,7 @@ export const INITIAL_HOME_DATA: HomeData = {
         "Built and integrated new features into a podcast website using PHP, HTML, and Bootstrap. Designed and deployed a no-code landing page for user registration.",
     },
     {
-      id: "5",
+      id: "4",
       role: "Backend Intern",
       company: "HNG Internship",
       href: "#",
@@ -93,7 +103,7 @@ export const INITIAL_HOME_DATA: HomeData = {
         "Collaborated in Agile teams to deliver two MVPs. Designed and implemented backend features and RESTful APIs using Laravel with PostgreSQL. Gained experience in system design, CI/CD pipelines, and unit testing.",
     },
     {
-      id: "6",
+      id: "3",
       role: "Academy Lead",
       company: "Softsuite.ng",
       href: "https://softsuite.ng/",
@@ -103,7 +113,7 @@ export const INITIAL_HOME_DATA: HomeData = {
         "Oversee day-to-day operations of the tech academy. Manage and coordinate a team of tutors. Collaborate with marketing teams to develop promotional strategies and increase enrollment.",
     },
     {
-      id: "7",
+      id: "2",
       role: "Web Developer",
       company: "Softsuite.ng",
       href: "https://softsuite.ng/",
@@ -113,7 +123,7 @@ export const INITIAL_HOME_DATA: HomeData = {
         "Contributed to client-facing web applications. Trained 26+ students in HTML, CSS, and JavaScript. Mentored 6 interns in Vue.js and Laravel development through real projects and code reviews.",
     },
     {
-      id: "8",
+      id: "1",
       role: "Freelance Developer",
       company: "Self-Employed",
       location: "Remote",
@@ -122,7 +132,7 @@ export const INITIAL_HOME_DATA: HomeData = {
         "Worked on various freelance web development projects, building websites and web applications for clients across different industries.",
     },
     {
-      id: "9",
+      id: "0",
       role: "Learning & Development",
       company: "Self-Study",
       location: "Nigeria",
