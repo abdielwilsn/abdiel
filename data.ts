@@ -48,7 +48,7 @@ export const INITIAL_HOME_DATA: HomeData = {
       company: "RkyConsults",
       href: "https://rkyconsults.com",
       location: "Nigeria",
-      period: "January 2025 – Present",
+      period: "January 2026 – Present",
       description:
         "Managing learning management system administration and developing web solutions for the company.",
     },
