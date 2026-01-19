@@ -17,8 +17,8 @@ export const INITIAL_HOME_DATA: HomeData = {
     // { id: "2", label: "Vercel", href: "https://vercel.com" },
   ],
   coreTeam: [
-    { id: "1", label: "Softsuite Academy", href: "#" },
-    { id: "2", label: "Notion Uniuyo", href: "#" },
+    { id: "1", label: "Softsuite Solutions", href: "#" },
+    // { id: "2", label: "Notion Uniuyo", href: "#" },
     // { id: "3", label: "Vite", href: "#" },
   ],
   creatorOf: [
@@ -29,6 +29,7 @@ export const INITIAL_HOME_DATA: HomeData = {
       label: "laravel-stubber",
       href: "https://packagist.org/packages/wilsn/laravel-stubber",
     },
+    {id: "4", label: "Pidgin-Lang", href: "https://github.com/abdielwilsn/pidgin-lang/blob/main/DOCUMENTATION.md"}
   ],
   createdProjects: [
     {
@@ -36,6 +37,7 @@ export const INITIAL_HOME_DATA: HomeData = {
       label: "laravel-stubber",
       href: "https://packagist.org/packages/wilsn/laravel-stubber",
     },
+    {id: "2", label: "Pidgin-Lang", href: "https://github.com/abdielwilsn/pidgin-lang/blob/main/DOCUMENTATION.md"}
     // { id: "2", label: "Slidev", href: "https://sli.dev" },
     // { id: "3", label: "VueUse", href: "https://vueuse.org" },
     // { id: "4", label: "UnoCSS", href: "https://unocss.dev" },
