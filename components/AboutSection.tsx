@@ -20,7 +20,7 @@ const AboutSection: React.FC = () => {
       <p>
         Outside coding I also love music (not just consuming but also
         producing) one day I will share this passion. I also love anime. (I
-        think Attack on Titan is the greatest anime ever, and I am still
+        think Naruto is the greatest anime ever, and I am still
         thinking about Vinland Saga years after.)
       </p>
     </section>
