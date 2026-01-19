@@ -22,7 +22,7 @@ const Home: React.FC = () => {
         creatorOf={homeData.creatorOf}
       />
 
-      <ProjectsSection projects={homeData.createdProjects} />
+      {/* <ProjectsSection projects={homeData.createdProjects} /> */}
 
       <AboutSection />
 
