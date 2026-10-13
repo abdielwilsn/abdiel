@@ -1,6 +1,5 @@
 import {
   Project,
-  Post,
   Talk,
   MediaItem,
   HomeData,
@@ -186,29 +185,33 @@ export const INITIAL_HOME_DATA: HomeData = {
 };
 
 export const INITIAL_PROJECTS: Project[] = [
-  
-];
-
-export const INITIAL_POSTS: Post[] = [
   {
-    id: "why-i-moved-to-tokyo",
-    slug: "why-i-moved-to-tokyo",
-    title: "Why I moved to Tokyo",
-    date: "Oct 12, 2024",
-    duration: "12 min",
-    categories: ["life", "travel"],
-    content:
-      "# Moving to Tokyo\n\nMoving to Tokyo was one of the biggest decisions of my life. The energy here is different. \n\n### The Vibe\nIt's a blend of **high-tech efficiency** and deep-rooted traditions. Every street corner has a story to tell, and every neighborhood feels like a different world.\n\n- Exploring local coffee shops\n- Vibrant tech community\n- Quiet parks and shrines\n\nThere's something inspiring about working in a city that never stops moving, yet respects the silence of its parks.",
+    id: "226e22f1-7755-48e4-8895-73c51296176c",
+    name: "PHP MVC Framework",
+    description: "A lightweight educational PHP MVC framework demonstrating core routing, controllers, models, views, and PDO-based database handling from scratch.",
+    link: "https://github.com/abdielwilsn/mvc-framework/blob/main/Readme.md",
+    github: "https://github.com/abdielwilsn/mvc-framework",
   },
   {
-    id: "reimagining-atomic-css",
-    slug: "reimagining-atomic-css",
-    title: "Reimagining Atomic CSS",
-    date: "Aug 24, 2024",
-    duration: "25 min",
-    categories: ["tech", "css", "tooling"],
-    content:
-      "# Reimagining Atomic CSS\n\nAtomic CSS has changed how we think about styling. With **UnoCSS**, we're taking it to the next level.\n\n> Performance is key.\n\nBy generating styles on-demand, we can reduce the size of our CSS bundles significantly. But it's not just about size; it's about the developer experience. Having the full power of CSS at your fingertips without the overhead of creatorOf huge stylesheets is a game changer.\n\n```css\n.u-btn {\n  @apply px-4 py-2 bg-blue-500 text-white rounded;\n}\n```",
+    id: "394e34f0-fd2f-4bc3-beb6-5bb65716df1e",
+    name: "Mini ORM",
+    description: "A tiny Eloquent-style ORM in pure PHP, using JSON storage to demonstrate Laravel’s ORM internals.",
+    link: "https://github.com/abdielwilsn/Mini-ORM/blob/main/README.md",
+    github: "https://github.com/abdielwilsn/Mini-ORM",
+  },
+  {
+    id: "d393603b-e50c-4743-821b-e2a972103360",
+    name: "Laravel Stubber",
+    description: "Laravel Stub Generator extends Artisan make commands to quickly generate services, actions, and Vue components from customizable stubs.",
+    link: "https://github.com/abdielwilsn/laravel-stubber/blob/main/README.md",
+    github: "https://github.com/abdielwilsn/laravel-stubber",
+  },
+  {
+    id: "1515233c-1659-495b-a85f-b3013383d1cf",
+    name: "Pidgin-Lang",
+    description: "Pidgin is a programming language with Nigerian Pidgin English syntax, making coding accessible and fun using familiar West African expressions.",
+    link: "https://github.com/abdielwilsn/pidgin-lang/blob/main/DOCUMENTATION.md",
+    github: "https://github.com/abdielwilsn/pidgin-lang/",
   },
 ];
 

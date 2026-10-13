@@ -5,14 +5,9 @@ import { useData } from "../App";
 interface NavbarProps {
   isDark: boolean;
   toggleTheme: () => void;
-  isAuthenticated?: boolean;
 }
 
-const Navbar: React.FC<NavbarProps> = ({
-  isDark,
-  toggleTheme,
-  isAuthenticated,
-}) => {
+const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
   const { posts, projects, talks } = useData();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
@@ -246,16 +241,6 @@ const Navbar: React.FC<NavbarProps> = ({
               {item.label}
             </NavLink>
           ))}
-          <NavLink
-            to={isAuthenticated ? "/admin" : ""}
-            className={({ isActive }) => `
-              text-[13px] tracking-wide transition-opacity hover:opacity-100
-              ${isActive ? "opacity-100 font-medium" : "opacity-50"}
-              px-2 py-0.5 border border-transparent rounded hover:border-gray-200 dark:hover:border-gray-800
-            `}
-          >
-            {isAuthenticated ? "Admin" : ""}
-          </NavLink>
         </div>
 
         {/* Action Icons - Always visible */}
@@ -487,23 +472,6 @@ const Navbar: React.FC<NavbarProps> = ({
                   {item.label}
                 </NavLink>
               ))}
-
-              <div className="border-t border-gray-200 dark:border-gray-800 pt-4 mt-4">
-                <NavLink
-                  to={isAuthenticated ? "/admin" : "/login"}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={({ isActive }) => `
-                    text-lg py-2 transition-colors
-                    ${
-                      isActive
-                        ? "text-blue-600 dark:text-blue-400 font-medium"
-                        : "text-gray-700 dark:text-gray-300"
-                    }
-                  `}
-                >
-                  {isAuthenticated ? "Admin" : "Login"}
-                </NavLink>
-              </div>
             </div>
           </div>
         </div>
