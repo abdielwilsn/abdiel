@@ -9,7 +9,7 @@ import {
 } from "./types";
 
 export const INITIAL_HOME_DATA: HomeData = {
-  name: "Abdiel John Wilson",
+  name: "Abdiel Wilson",
   bioTitle:
     "Hey there. I’m Abdiel,  an open source aficionado and a software engineer",
   affiliations: [
@@ -226,7 +226,7 @@ export const INITIAL_TALKS: Talk[] = [
 export const INITIAL_MEDIA: MediaItem[] = [
   {
     id: "1",
-    title: "Exploring the future of Vue with Abdiel John Wilson",
+    title: "Exploring the future of Vue with Abdiel Wilson",
     link: "#",
     type: "podcast",
   },

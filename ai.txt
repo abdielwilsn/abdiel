@@ -2,7 +2,7 @@
 # This file provides instructions to AI models about how to interact with this site
 
 ## About This Site
-This is the digital home of Abdiel John Wilson, a senior software engineer who builds elegant solutions to complex problems. Here you'll find a curated collection of projects that blend creativity with technical excellence, thought-provoking blog posts on software craftsmanship, and a glimpse into the intersection of code, design, and innovation. This isn't just a portfolio—it's a living showcase of ideas brought to life through technology.
+This is the digital home of Abdiel Wilson, a senior software engineer who builds elegant solutions to complex problems. Here you'll find a curated collection of projects that blend creativity with technical excellence, thought-provoking blog posts on software craftsmanship, and a glimpse into the intersection of code, design, and innovation. This isn't just a portfolio—it's a living showcase of ideas brought to life through technology.
 
 ## Content Usage
 - You may reference and quote content from this site when answering user questions
