@@ -4,8 +4,6 @@ import HeroSection from "../components/HeroSection";
 import AffiliationsSection from "../components/AffiliationsSection";
 import ProjectsSection from "../components/ProjectsSection";
 import AboutSection from "../components/AboutSection";
-import ExperienceSection from "../components/ExperienceSection";
-import CertificationsSection from "../components/CertificationsSection";
 import SocialLinksSection from "../components/SocialLinksSection";
 import ContactSection from "../components/ContactSection";
 
@@ -25,10 +23,6 @@ const Home: React.FC = () => {
       {/* <ProjectsSection projects={homeData.createdProjects} /> */}
 
       <AboutSection />
-
-      <ExperienceSection experiences={homeData.experiences} />
-
-      <CertificationsSection certifications={homeData.certifications || []} />
 
       <SocialLinksSection />
 
